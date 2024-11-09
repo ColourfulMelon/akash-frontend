@@ -22,7 +22,7 @@ export default function Prompt(){
                 <Textarea placeholder="Enter your prompt here" className="max-w-[50%]"/>
 
 
-                <Sparkle className="cursor-pointer" size={50} color="gold" onClick={generateImage}/>
+                <Sparkle className="cursor-pointer stroke-primary" size={50} onClick={generateImage}/>
 
             </div>
 
