@@ -22,6 +22,9 @@ const config = {
       'SFPro': ['SF Pro Display', 'sans-serif'],
     },
     extend: {
+      boxShadow: {
+        'red-glow': '0 4px 200px rgba(255, 0, 0, 0.6)',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -15,7 +15,7 @@ export default function Home() {
                 <Prompt/>
 
 
-                <div className="border-4 border-primary my-auto mx-auto w-auto rounded-2xl">
+                <div className="border-4 border-primary my-auto mx-auto w-auto rounded-2xl shadow-red-glow">
                     <Image className="aspect-square filter-red"
                            src={placeholder} alt="placeholder"/>
                 </div>
