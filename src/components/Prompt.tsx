@@ -1,12 +1,13 @@
 'use client';
 import {Textarea} from "@/components/ui/textarea";
-import {Sparkle} from "lucide-react";
+import {Sparkle, Sparkles} from "lucide-react";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import AdvancedOptions from "@/components/AdvancedOptions";
 
 export default function Prompt(){
 
@@ -22,15 +23,15 @@ export default function Prompt(){
                 <Textarea placeholder="Enter your prompt here" className="max-w-[50%]"/>
 
 
-                <Sparkle className="cursor-pointer stroke-primary" size={50} onClick={generateImage}/>
+                <Sparkles className="cursor-pointer stroke-primary" size={50} onClick={generateImage}/>
 
             </div>
 
-            <Accordion type="single" collapsible>
+            <Accordion  type="single" collapsible>
                 <AccordionItem value="item-1">
                     <AccordionTrigger className="text-gray-500">Advanced Options</AccordionTrigger>
-                    <AccordionContent>
-
+                    <AccordionContent className="w-full">
+                        <AdvancedOptions/>
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>

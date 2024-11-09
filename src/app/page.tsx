@@ -6,14 +6,17 @@ import {Button} from "@/components/ui/button";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center">
+        <main className="flex flex-col items-center justify-center">
 
             <Header/>
             <div className="grid grid-cols-2 gap-4 w-full">
                 <Prompt/>
 
-                <Image className="aspect-square my-auto mx-auto w-auto border-4 border-primary rounded-2xl filter-red"
-                       src={placeholder} alt="placeholder"/>
+
+                <div className="border-4 border-primary my-auto mx-auto w-auto rounded-2xl">
+                    <Image className="aspect-square filter-red"
+                           src={placeholder} alt="placeholder"/>
+                </div>
             </div>
 
 
