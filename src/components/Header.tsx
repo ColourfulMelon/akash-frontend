@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Header(){
 
     return (
-        <header className="flex items-center justify-between p-4 w-full text-white px-10">
+        <header className="flex items-center justify-center p-4 w-full text-white px-10 mt-2">
             <div className="flex items-center gap-4">
                 <Image src={logoCircle} alt="Logo" width={70} />
                 <h1 className="text-3xl font-poppins font-thin">Alchemist</h1>
