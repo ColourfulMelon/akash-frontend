@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import {ThemeProvider} from "@/components/theme-provider";
-
+import {SidebarProvider, SidebarTrigger} from "@/components/ui/sidebar";
+import {AppSidebar} from "@/components/app-sidebar";
 
 export const metadata: Metadata = {
     title: "Akash Alchemist",
@@ -20,7 +20,12 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
             enableSystem
             disableTransitionOnChange
         >
-            <body className='font-SFPro'>{children}</body>
+            <SidebarProvider defaultOpen={false}>
+                <AppSidebar/>
+                <body className='font-SFPro'>
+                    {children}
+                </body>
+            </SidebarProvider>
         </ThemeProvider>
         </html>
     );

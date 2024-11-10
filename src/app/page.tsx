@@ -5,13 +5,14 @@ import Header from "@/components/Header";
 import {Button} from "@/components/ui/button";
 import how3 from "@/assets/how3.png"
 import Footer from "@/components/Footer";
+import {AppSidebar} from "@/components/app-sidebar";
 
 export default function Home() {
     return (
         <main className="flex flex-col items-center justify-center">
 
             <Header/>
-            <section className="grid grid-cols-2 gap-4 w-full mt-[-6rem]">
+            <section className="grid grid-cols-2 gap-4 w-full pt-[-6rem]">
                 <Prompt/>
 
 
