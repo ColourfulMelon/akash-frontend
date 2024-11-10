@@ -3,6 +3,7 @@ import "./globals.css";
 import {ThemeProvider} from "@/components/theme-provider";
 import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/components/ui/sidebar";
 import {AppSidebar} from "@/components/app-sidebar";
+import {Toaster} from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
     title: "Akash Alchemist",
@@ -24,6 +25,7 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
 
         <SidebarProvider defaultOpen={false}>
                 {children}
+            <Toaster/>
             <AppSidebar/>
         </SidebarProvider>
 

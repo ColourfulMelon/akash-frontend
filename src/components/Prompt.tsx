@@ -11,14 +11,24 @@ import AdvancedOptions from "@/components/AdvancedOptions";
 import {TypeAnimation} from "react-type-animation";
 import {atom} from "jotai";
 import {useAtom} from "jotai";
+import promptImage from "@/actions/promptImage";
+import {useState} from "react";
+import {useToast} from "@/components/ui/use-toast";
 
-export const statusAtom = atom('idle');
+interface TStatus {
+    status: 'idle' | 'generating';
+    id: string | null;
+}
+export const statusAtom = atom<TStatus>({status: 'idle', id: null});
 export default function Prompt(){
     const [status, setStatus] = useAtom(statusAtom);
-
+    const { toast } = useToast();
     async function generateImage(){
-
-        setStatus('generating');
+        // get prompt from textarea
+        const prompt = document.querySelector('textarea')?.value;
+        if (!prompt) return toast({variant: 'destructive', title: 'Error', description: 'Please enter a prompt'});
+        const id = await promptImage(prompt);
+        setStatus({status: 'generating', id: id});
     }
 
     return (
