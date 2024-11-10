@@ -6,7 +6,7 @@ import {
     SidebarContent,
     SidebarHeader,
 } from "@/components/ui/sidebar";
-import placeholder from "@/assets/image-placeholder.png";
+import placeholder from "@/assets/images/image-placeholder.png";
 import Image, {StaticImageData} from "next/image";
 
 const items = Array.from({ length: 10 }, (_, i) => i);

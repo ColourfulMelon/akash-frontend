@@ -1,9 +1,11 @@
 import Image from "next/image";
-import placeholder from "@/assets/image-placeholder.png";
+import placeholder from "@/assets/beaker.png";
 import Prompt from "@/components/Prompt";
 import Header from "@/components/Header";
-import how3 from "@/assets/how3.png"
+import how3 from "@/assets/images/how3.png"
 import Footer from "@/components/Footer";
+import {Player} from "@lordicon/react";
+import IconPlayer from "@/components/IconPlayer";
 
 export default function Home() {
     return (
@@ -13,9 +15,8 @@ export default function Home() {
                 <Header/>
                 <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 mx-20 mt-[-5rem]">
                     <Prompt/>
-                    <div className="hidden xl:block border-4 border-primary rounded-2xl ml-20 shadow-red-glow aspect-square my-auto max-h-[calc(100vh-30rem)]">
-                        <Image className="filter-red w-full"
-                               src={placeholder} alt="placeholder"/>
+                    <div className="hidden xl:block border-4 border-primary rounded-2xl ml-20 shadow-red-glow aspect-square my-auto max-h-[calc(100vh-30rem)] overflow-hidden">
+                        <IconPlayer className="size-full"/>
                     </div>
                 </section>
             </div>

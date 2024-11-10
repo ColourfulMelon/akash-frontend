@@ -9,11 +9,16 @@ import {
 } from "@/components/ui/accordion"
 import AdvancedOptions from "@/components/AdvancedOptions";
 import {TypeAnimation} from "react-type-animation";
+import {atom} from "jotai";
+import {useAtom} from "jotai";
 
+export const statusAtom = atom('idle');
 export default function Prompt(){
+    const [status, setStatus] = useAtom(statusAtom);
 
     async function generateImage(){
 
+        setStatus('generating');
     }
 
     return (
@@ -22,10 +27,10 @@ export default function Prompt(){
             <TypeAnimation
                 className="mb-4"
                 sequence={[
-                    'Prompt',
+                    'Create',
                 ]}
                 wrapper="span"
-                speed={5}
+                speed={3}
                 style={{ fontSize: '2.5rem', fontWeight: "bold", display: 'inline-block' }}
                 repeat={1}
             />

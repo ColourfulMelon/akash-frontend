@@ -3,7 +3,7 @@ export default function  Footer() {
         <section className='bg-zinc-950 flex flex-col align-middle text-white w-full pb-10 text-center'>
 
             <div className='max-w-screen-lg mx-auto'>
-                <h3 className='uppercase font-black mt-20 text-white text-lg text-center'>Okay that&apos;s it, you
+                <h3 className='uppercase font-black mt-20 text-white text-xl text-center'>Okay that&apos;s it, you
                     can stop scrolling now!</h3>
             </div>
             <div className='flex justify-center mr-[25rem]'>
@@ -15,6 +15,7 @@ export default function  Footer() {
                 {/*col 1*/}
                 <div className='row-span-1 flex flex-col'>
 
+                    <a href="https://lordicon.com/">Icon by Lordicon.com</a>
                 </div>
                 {/*col 2*/}
                 <div className='row-span-1 flex flex-col gap-8'>
@@ -29,7 +30,7 @@ export default function  Footer() {
             </div>
 
             {/*copyright */}
-            <p>© {(new Date).getFullYear()} Dev3 Studio. All rights reserved</p>
+            <p><a href="https://dev3.studio" target="_blank">© {(new Date).getFullYear()} Dev3 Studio.</a>&nbsp;All rights reserved</p>
         </section>
     );
 }

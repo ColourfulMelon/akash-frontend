@@ -1,5 +1,5 @@
 "use client";
-import logoCircle from "@/assets/logo_circle.png";
+import logoCircle from "@/assets/images/logo_circle.png";
 import Image from "next/image";
 import {SidebarMenuButton, SidebarTrigger, useSidebar} from "@/components/ui/sidebar";
 import {PanelRight} from "lucide-react";
