@@ -12,10 +12,10 @@ import {
 import placeholder from "@/assets/image-placeholder.png"
 import Image from "next/image";
 
-const items = Array.from({ length: 10 }, (_, i) => i)
+const items = Array.from({ length: 2 }, (_, i) => i)
 export function AppSidebar() {
     return (
-        <Sidebar side="right" variant="sidebar" collapsible="offcanvas">
+        <Sidebar side="right" variant="inset">
             <SidebarContent>
             {/*    images*/}
                 {items.map((item) => (
