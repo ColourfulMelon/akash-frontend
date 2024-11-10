@@ -1,6 +1,6 @@
 'use client';
 import {Textarea} from "@/components/ui/textarea";
-import {Sparkle, Sparkles} from "lucide-react";
+import {Sparkles} from "lucide-react";
 import {
     Accordion,
     AccordionContent,
@@ -31,7 +31,7 @@ export default function Prompt(){
             />
 
             <div className="flex items-center gap-4 w-full justify-center mx-20 max-w-[50rem]">
-                <Textarea placeholder="Enter your prompt here" className="h-20 text-xl"/>
+                <Textarea placeholder="Enter your prompt here" className="h-20 text-xl animate-glow"/>
 
                 <Sparkles className="cursor-pointer stroke-primary" size={50} onClick={generateImage}/>
             </div>

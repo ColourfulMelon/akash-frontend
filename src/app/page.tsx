@@ -4,7 +4,6 @@ import Prompt from "@/components/Prompt";
 import Header from "@/components/Header";
 import how3 from "@/assets/how3.png"
 import Footer from "@/components/Footer";
-import { SidebarInset } from "@/components/ui/sidebar";
 
 export default function Home() {
     return (
@@ -15,7 +14,7 @@ export default function Home() {
                 <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 mx-20 mt-[-5rem]">
                     <Prompt/>
                     <div className="hidden xl:block border-4 border-primary rounded-2xl ml-20 shadow-red-glow aspect-square my-auto max-h-[calc(100vh-30rem)]">
-                        <Image className="filter-red w-full "
+                        <Image className="filter-red w-full"
                                src={placeholder} alt="placeholder"/>
                     </div>
                 </section>

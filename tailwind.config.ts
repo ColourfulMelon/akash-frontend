@@ -11,7 +11,7 @@ const config = {
   prefix: "",
   theme: {
   	container: {
-  		center: 'true',
+  		center: true,
   		padding: '2rem',
   		screens: {
   			'2xl': '1400px'
@@ -23,7 +23,7 @@ const config = {
   	},
   	extend: {
   		boxShadow: {
-  			'red-glow': '0 4px 200px rgba(255, 0, 0, 0.6)'
+  			'red-glow': '0 4px 100px rgba(255, 0, 0, 0.6)'
   		},
   		colors: {
   			border: 'hsl(var(--border))',
@@ -91,11 +91,16 @@ const config = {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+			glow: {
+				'0%, 100%': { boxShadow: '0 4px 15px rgba(255, 0, 0, 0)' },
+				'50%': { boxShadow: '0 4px 15px rgba(255, 0, 0, 0.6)' },
+			},
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+			glow: 'glow 10s infinite',
   		}
   	}
   },
