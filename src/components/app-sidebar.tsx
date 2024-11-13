@@ -1,49 +1,60 @@
 'use client';
-import { useState } from 'react';
-import { ImageDialog } from './ImageDialog';
 import {
     Sidebar,
-    SidebarContent,
-    SidebarHeader,
+    SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
+    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger,
 } from "@/components/ui/sidebar";
-import placeholder from "@/assets/images/image-placeholder.png";
-import Image, {StaticImageData} from "next/image";
+import Image from "next/image";
+import {Book, Compass, Terminal } from "lucide-react";
+import logo from "@/assets/images/logo.svg";
+import akashLogo from "@/assets/images/akashLogo.svg";
 
-const items = Array.from({ length: 10 }, (_, i) => i);
 
 export function AppSidebar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState<StaticImageData | null>(null);
-
-    function openDialog(imageSrc: StaticImageData) {
-        setSelectedImage(imageSrc);
-        setIsOpen(true);
-    }
-
-    function closeDialog() {
-        setIsOpen(false);
-        setSelectedImage(null);
-    }
 
     return (
-        <>
-            <Sidebar side="right" variant="inset">
-                <SidebarHeader>
-                    <h2 className="text-2xl font-semibold">Generated Images</h2>
-                </SidebarHeader>
-                <SidebarContent>
-                    {items.map((item, index) => (
-                        <Image
-                            key={index}
-                            src={placeholder}
-                            alt=""
-                            onClick={() => openDialog(placeholder)}
-                            className="cursor-pointer"
-                        />
-                    ))}
-                </SidebarContent>
-            </Sidebar>
-            <ImageDialog isOpen={isOpen} closeDialog={closeDialog} imageSrc={selectedImage} />
-        </>
+        <Sidebar collapsible="icon">
+            <SidebarHeader>
+                    <Image src={logo} alt="Alchemist Logo" className="w-full p-3"/>
+            </SidebarHeader>
+            <SidebarContent>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <a href="/">
+                                        <Terminal/>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <a href="/">
+                                        <Compass/>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+            </SidebarContent>
+            <SidebarFooter>
+                <SidebarMenuItem>
+                    <SidebarMenuButton asChild className="w-40">
+                        <Book/>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                        <Image src={akashLogo} alt="Akash logo"/>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarFooter>
+        </Sidebar>
     );
 }

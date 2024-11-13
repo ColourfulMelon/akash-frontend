@@ -1,36 +1,31 @@
+import Image from "next/image";
+import akash from "@/assets/images/akash.svg"
+import {Github, Heart} from "lucide-react";
+import {Separator} from "@/components/ui/separator";
+
 export default function  Footer() {
     return(
-        <section className='bg-zinc-950 flex flex-col align-middle text-white w-full pb-10 text-center'>
+        <section className='flex flex-col align-middle text-white w-full pb-4 text-center absolute bottom-0'>
 
-            <div className='max-w-screen-lg mx-auto'>
-                <h3 className='uppercase font-black mt-20 text-white text-xl text-center'>Okay that&apos;s it, you
-                    can stop scrolling now!</h3>
-            </div>
-            <div className='flex justify-center mr-[25rem]'>
-
+            <div className='flex justify-center mb-4'>
+                <Image src={akash} alt=""/>
             </div>
 
-            {/*columns*/}
-            <div className='grid grid-cols-3 gap-10 ml-10 mr-40 mt-20'>
-                {/*col 1*/}
-                <div className='row-span-1 flex flex-col'>
-
-                    <a href="https://lordicon.com/">Icon by Lordicon.com</a>
+            <div className="flex mx-auto gap-4 mb-2">
+                <a href="" target="_blank" className="underline">Docs</a>
+                <Separator orientation="vertical"/>
+                <div className="flex">
+                    <Github/>
+                    <a href="https://github.com/Dev3-Studio/akash-frontend" target="_blank" className="underline">Source Code</a>
                 </div>
-                {/*col 2*/}
-                <div className='row-span-1 flex flex-col gap-8'>
-
-                </div>
-                {/*col 3*/}
-                <div className='row-span-1'>
-
-                </div>
-
-
+                <Separator orientation="vertical"/>
+                <p>Built with <Heart color="red" className="inline"/> by <a href="https://dev3.studio"
+                                                                            className="underline" target="_blank">Dev3
+                    Studio</a></p>
             </div>
 
-            {/*copyright */}
-            <p><a href="https://dev3.studio" target="_blank">© {(new Date).getFullYear()} Dev3 Studio.</a>&nbsp;All rights reserved</p>
+            <p>Animated Icon by <a target="_blank" className="underline" href="https://lordicon.com/">Lordicon.com</a></p>
+
         </section>
     );
 }

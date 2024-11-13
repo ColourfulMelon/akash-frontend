@@ -8,14 +8,14 @@ import {useAtomValue} from "jotai/index";
 
 export default function IconPlayer({className}: {className?: string}) {
     const playerRef = useRef(null);
-    const status = useAtomValue(statusAtom);
+    const statusObj = useAtomValue(statusAtom);
 
     useEffect(() => {
-        if(status === 'generating'){
+        if(statusObj.status === 'generating'){
             // @ts-ignore
             playerRef.current?.play();
         }
-    }, [status])
+    }, [statusObj])
     return(
         <div className={cn("flex justify-center items-center",className)}>
             <Player
