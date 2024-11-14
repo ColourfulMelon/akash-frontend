@@ -8,6 +8,7 @@ import {statusAtom} from "@/components/Prompt";
 import {useEffect, useRef, useState} from "react";
 import AdvancedOptions from "@/components/AdvancedOptions";
 import AutoResizeTextarea from "@/components/AutoResizeTextarea";
+import {render} from "react-dom";
 
 export default function PromptInput(){
     const [status, setStatus] = useAtom(statusAtom);
@@ -37,3 +38,4 @@ export default function PromptInput(){
         </div>
     )
 }
+
