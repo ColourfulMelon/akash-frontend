@@ -21,22 +21,26 @@ export function AppSidebar() {
                 <SidebarGroup>
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu>
-                            <SidebarMenuItem className="flex justify-center">
-                                <SidebarMenuButton asChild>
-                                    <a href="/">
-                                        <Terminal/>
-                                        <span>Dashboard</span>
-                                    </a>
+                        <SidebarMenu className="">
+                            <SidebarMenuItem className="flex justify-center mb-4 !w-full">
+                                <SidebarMenuButton asChild className="">
+                                    <Terminal />
+
+                                    {/*<a href="/">*/}
+                                    {/*    <Terminal />*/}
+                                    {/*    <span>Dashboard</span>*/}
+                                    {/*</a>*/}
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
 
                             <SidebarMenuItem className="flex justify-center">
                                 <SidebarMenuButton asChild >
-                                    <a href="/">
-                                        <Compass/>
-                                        <span>Dashboard</span>
-                                    </a>
+                                    <Compass/>
+
+                                    {/*<a href="/">*/}
+                                    {/*    <Compass/>*/}
+                                    {/*    <span>Dashboard</span>*/}
+                                    {/*</a>*/}
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                         </SidebarMenu>
@@ -49,7 +53,7 @@ export function AppSidebar() {
                         <Book/>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
-                <SidebarMenuItem className="flex justify-center">
+                <SidebarMenuItem className="flex justify-center mt-6 mb-4">
                     <SidebarMenuButton asChild>
                         <Image src={akashLogo} className="w-full" alt="Akash logo"/>
                     </SidebarMenuButton>
