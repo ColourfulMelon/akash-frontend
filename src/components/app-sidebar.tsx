@@ -22,7 +22,7 @@ export function AppSidebar() {
                     <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            <SidebarMenuItem>
+                            <SidebarMenuItem className="flex justify-center">
                                 <SidebarMenuButton asChild>
                                     <a href="/">
                                         <Terminal/>
@@ -31,8 +31,8 @@ export function AppSidebar() {
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
 
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
+                            <SidebarMenuItem className="flex justify-center">
+                                <SidebarMenuButton asChild >
                                     <a href="/">
                                         <Compass/>
                                         <span>Dashboard</span>
@@ -44,14 +44,14 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <SidebarMenuItem>
-                    <SidebarMenuButton asChild className="w-40">
+                <SidebarMenuItem className="flex justify-center">
+                    <SidebarMenuButton asChild>
                         <Book/>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
-                <SidebarMenuItem>
+                <SidebarMenuItem className="flex justify-center">
                     <SidebarMenuButton asChild>
-                        <Image src={akashLogo} alt="Akash logo"/>
+                        <Image src={akashLogo} className="w-full" alt="Akash logo"/>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
             </SidebarFooter>
