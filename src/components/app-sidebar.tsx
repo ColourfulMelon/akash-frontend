@@ -2,15 +2,25 @@
 import {
     Sidebar,
     SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
-    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger,
+    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger, useSidebar,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import {Book, Compass, Terminal } from "lucide-react";
 import logo from "@/assets/images/logo.svg";
 import akashLogo from "@/assets/images/akashLogo.svg";
+import {useState} from "react";
 
 
 export function AppSidebar() {
+    const {
+        state,
+        open,
+        setOpen,
+        openMobile,
+        setOpenMobile,
+        isMobile,
+        toggleSidebar,
+    } = useSidebar()
 
     return (
         <Sidebar collapsible="icon">

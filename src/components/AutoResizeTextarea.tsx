@@ -81,7 +81,7 @@ function AutoResizeTextarea() {
             ref={textareaRef}
             value={value}
             onChange={handleChange}
-            className="w-full text-xl border-none !ring-0 text-white placeholder:text-white font-light resize-none overflow-y-scroll p-0 max-h-40"
+            className="w-full text-xl border-none !ring-0 text-white placeholder:text-white font-light resize-none scrollbar-hidden overflow-y-scroll  p-0 max-h-40"
             placeholder="Type your prompt here"
         />
     );
