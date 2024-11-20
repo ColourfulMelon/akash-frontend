@@ -16,7 +16,6 @@ export default function Home() {
                 <section className="flex flex-col justify-center align-middle h-full">
 
                     <ImageContainer/>
-                    <CenterLogo/>
                     <Prompt/>
 
                 </section>

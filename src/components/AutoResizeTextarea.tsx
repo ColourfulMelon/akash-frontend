@@ -70,7 +70,7 @@ function AutoResizeTextarea() {
         textarea.style.height = `${numLines * taLineHeight}px`;
     }, [value]);
 
-    const typeSpeed = 100;
+    const typeSpeed = 50;
 
     async function typeWriter(text: string){
         setValue('');
@@ -111,12 +111,15 @@ function AutoResizeTextarea() {
 
     useEffect(() => {
         if (status.status === 'idle') return;
-        if (status.prompt === ''){
-            console.log(value);
-            removeText();
-        } else {
-            typeWriter(status.prompt);
+        if (status.status === 'typing') {
+            if (status.prompt === ''){
+                console.log(value);
+                removeText();
+            } else {
+                typeWriter(status.prompt);
+            }
         }
+
     }, [status]);
 
     return (

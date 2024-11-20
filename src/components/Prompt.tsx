@@ -19,7 +19,7 @@ export default function Prompt(){
     const [status, setStatus] = useAtom(statusAtom);
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className={`flex flex-col items-center justify-center ${status.status === 'generating' ? '': ''}`}>
 
             <div className={`${status.status !== "idle" ? 'animate-fadeOut' : ''}`}>
                 <TypeAnimation
