@@ -5,10 +5,11 @@ import PromptInput from "@/components/PromptInput";
 import PromptSuggestion from "@/components/PromptSuggestion";
 
 interface TStatus {
-    status: 'idle' | 'generating';
+    status: 'idle' | 'generating'| 'done';
     id: string | null;
+    prompt: string;
 }
-export const statusAtom = atom<TStatus>({status: 'idle', id: null});
+export const statusAtom = atom<TStatus>({status: 'idle', id: null, prompt: ''});
 export default function Prompt(){
 
 

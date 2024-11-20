@@ -25,6 +25,7 @@ export const zTask = z.object({
 	prompt: z.string(),
 	options: options.optional(),
 });
+export type Task = z.infer<typeof zTask>;
 
 export const zTaskCreate = zTask.omit({ id: true });
 export type TaskCreate = z.infer<typeof zTaskCreate>;

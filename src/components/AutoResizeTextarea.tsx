@@ -1,8 +1,13 @@
 'use client';
 import React, {useEffect, useRef, useState} from 'react';
 import {Textarea} from "@/components/ui/textarea";
+import {useAtom} from "jotai/index";
+import {statusAtom} from "@/components/Prompt";
+import Typed from "typed.js";
 
 function AutoResizeTextarea() {
+    const [status, setStatus] = useAtom(statusAtom);
+
     const calculateContentHeight = function( ta: HTMLTextAreaElement, scanAmount: number ) {
         let height = ta.offsetHeight;
         const origHeight = ta.style.height,
@@ -47,8 +52,6 @@ function AutoResizeTextarea() {
         return Math.ceil(taHeight / taLineHeight);
     };
 
-
-
     const textareaRef = useRef(null);
     const [value, setValue] = useState("");
 
@@ -68,6 +71,34 @@ function AutoResizeTextarea() {
         textarea.style.height = `${numLines * taLineHeight}px`;
     }, [value]);
 
+    useEffect(() => {
+        console.log(status);
+        if (status.status === 'generating'){
+            typeWriter();
+        }
+    }, [status]);
+
+    let i = 0;
+    const [switchTyper, setSwitchTyper] = useState(false);
+
+    async function typeWriter() {
+        if (i <= value.length) {
+            setValue(value.slice(0, value.length - i));
+            i++;
+            setTimeout(typeWriter, 100);
+        } else {
+            setSwitchTyper(true);
+            await new Promise(r => setTimeout(r, 1000));
+            // start type animation
+            const x = new Typed("#test", {
+                    strings: [status.prompt],
+                    typeSpeed: 50,
+                    backSpeed: 50,
+                }
+            );
+
+        }
+    }
 
 
     // @ts-ignore
@@ -76,14 +107,18 @@ function AutoResizeTextarea() {
     };
 
     return (
-        <Textarea
-            rows={1}
-            ref={textareaRef}
-            value={value}
-            onChange={handleChange}
-            className="w-full text-xl border-none !ring-0 text-white placeholder:text-white font-light resize-none scrollbar-hidden overflow-y-scroll  p-0 max-h-40"
-            placeholder="Type your prompt here"
-        />
+        <div className="w-full text-white placeholder:text-white font-light text-xl">
+            {!switchTyper && <Textarea
+                rows={1}
+                ref={textareaRef}
+                value={value}
+                onChange={handleChange}
+                className="w-full border-none !ring-0 resize-none scrollbar-hidden overflow-y-scroll p-0 max-h-40 text-white placeholder:text-white font-light text-xl"
+                placeholder="Type your prompt here"
+            />}
+
+            {switchTyper && <span id="test"/>}
+        </div>
     );
 }
 
