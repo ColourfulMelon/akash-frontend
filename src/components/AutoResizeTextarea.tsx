@@ -3,7 +3,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Textarea} from "@/components/ui/textarea";
 import {useAtom} from "jotai/index";
 import {statusAtom} from "@/components/Prompt";
-import Typed from "typed.js";
 
 function AutoResizeTextarea() {
     const [status, setStatus] = useAtom(statusAtom);
@@ -71,53 +70,66 @@ function AutoResizeTextarea() {
         textarea.style.height = `${numLines * taLineHeight}px`;
     }, [value]);
 
-    useEffect(() => {
-        console.log(status);
-        if (status.status === 'generating'){
-            typeWriter();
+    const typeSpeed = 100;
+
+    async function typeWriter(text: string){
+        setValue('');
+        let j = 0;
+
+        while (j <= text.length) {
+            setValue(text.slice(0, j));
+            j++;
+            await new Promise(r => setTimeout(r, typeSpeed));
         }
-    }, [status]);
 
-    let i = 0;
-    const [switchTyper, setSwitchTyper] = useState(false);
+        setStatus({ ...status, status: 'generating' });
+    }
 
-    async function typeWriter() {
-        if (i <= value.length) {
+
+    async function removeText() {
+        const textArea = textareaRef.current;
+        if (!textArea) return;
+        // @ts-ignore
+        textArea.placeholder = 'Generating prompt...';
+        // @ts-ignore
+        textArea.disabled = true;
+
+        let i = 0;
+        while (i <= value.length) {
             setValue(value.slice(0, value.length - i));
             i++;
-            setTimeout(typeWriter, 100);
-        } else {
-            setSwitchTyper(true);
-            await new Promise(r => setTimeout(r, 1000));
-            // start type animation
-            const x = new Typed("#test", {
-                    strings: [status.prompt],
-                    typeSpeed: 50,
-                    backSpeed: 50,
-                }
-            );
-
+            await new Promise(r => setTimeout(r, typeSpeed));
         }
     }
 
 
     // @ts-ignore
     const handleChange = (event) => {
+        console.log('Update value to ', event.target.value);
         setValue(event.target.value);
     };
 
+    useEffect(() => {
+        if (status.status === 'idle') return;
+        if (status.prompt === ''){
+            console.log(value);
+            removeText();
+        } else {
+            typeWriter(status.prompt);
+        }
+    }, [status]);
+
     return (
-        <div className="w-full text-white placeholder:text-white font-light text-xl">
-            {!switchTyper && <Textarea
+        <div className="w-full">
+            <Textarea
                 rows={1}
                 ref={textareaRef}
                 value={value}
                 onChange={handleChange}
-                className="w-full border-none !ring-0 resize-none scrollbar-hidden overflow-y-scroll p-0 max-h-40 text-white placeholder:text-white font-light text-xl"
+                className="w-full border-none !ring-0 resize-none scrollbar-hidden overflow-y-scroll p-0 max-h-40 text-white placeholder:text-white font-light text-xl disabled:opacity-80"
                 placeholder="Type your prompt here"
-            />}
+            />
 
-            {switchTyper && <span id="test"/>}
         </div>
     );
 }

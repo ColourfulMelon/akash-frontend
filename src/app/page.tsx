@@ -3,6 +3,8 @@ import Prompt from "@/components/Prompt";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import logoText from "@/assets/images/logoText.svg";
+import CenterLogo from "@/components/CenterLogo";
+import ImageContainer from "@/components/ImageContainer";
 
 export default function Home() {
     return (
@@ -12,12 +14,11 @@ export default function Home() {
                 <Header/>
 
                 <section className="flex flex-col justify-center align-middle h-full">
-                    <Image className="mx-auto mb-40" src={logoText} alt="Alchemist logo"/>
 
+                    <ImageContainer/>
+                    <CenterLogo/>
                     <Prompt/>
-                    {/*<div className="hidden xl:block border-4 border-primary rounded-2xl ml-20 shadow-red-glow aspect-square my-auto max-h-[calc(100vh-30rem)] overflow-hidden">*/}
-                    {/*    <IconPlayer className="size-full"/>*/}
-                    {/*</div>*/}
+
                 </section>
                 <Footer/>
 

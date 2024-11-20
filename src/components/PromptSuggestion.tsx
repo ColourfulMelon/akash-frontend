@@ -1,7 +1,12 @@
+'use client';
 import {ArrowUpRight} from "lucide-react";
 import {useEffect} from "react";
+import {useAtom} from "jotai/index";
+import {statusAtom} from "@/components/Prompt";
 
 export default function PromptSuggestion({prompt}: {prompt: string}){
+
+    const [status, setStatus] = useAtom(statusAtom);
 
     let textArea: HTMLTextAreaElement | null = null;
 
@@ -14,8 +19,9 @@ export default function PromptSuggestion({prompt}: {prompt: string}){
         textArea.value = prompt
     }
 
+
     return(
-        <div className="flex rounded-2xl bg-secondary p-1 px-3 cursor-pointer" onClick={setPrompt}>
+        <div className={`flex rounded-2xl bg-secondary p-1 px-3 cursor-pointer ${status.status !== "idle" ? 'animate-fadeOut': ''}`} onClick={setPrompt}>
             <p className="font-light">{prompt}</p>
             <ArrowUpRight className="my-auto ml-2" size={17}/>
         </div>

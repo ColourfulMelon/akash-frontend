@@ -25,7 +25,6 @@ export default function  Footer() {
             </div>
 
             <p>Animated Icon by <a target="_blank" className="underline" href="https://lordicon.com/">Lordicon.com</a></p>
-            <p>Type Animation by <a target="_blank" className="underline" href="https://mattboldt.com/">Matt Boldt</a></p>
 
         </section>
 );
