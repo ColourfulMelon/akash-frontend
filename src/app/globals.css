@@ -73,131 +73,131 @@
     font-family: "Poppins";
     font-weight: 100;
     font-style: normal;
-    src: url("../../src/assets/fonts/Poppins-Thin.ttf");
+    src: url("../../public/fonts/Poppins-Thin.ttf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 100;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Thin.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Thin.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 200;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Ultralight.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Ultralight.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 300;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Light.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Light.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 400;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Regular.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Regular.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 500;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Medium.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Medium.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 600;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Semibold.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Semibold.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 700;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Bold.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Bold.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 800;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Heavy.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Heavy.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 900;
     font-style: normal;
-    src: url("../../src/assets/fonts/SF-Pro-Display-Black.otf");
+    src: url("../../public/fonts/SF-Pro-Display-Black.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 100;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-ThinItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-ThinItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 200;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-UltralightItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-UltralightItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 300;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-LightItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-LightItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 400;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-RegularItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-RegularItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 500;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-MediumItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-MediumItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 600;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-SemiboldItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-SemiboldItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 700;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-BoldItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-BoldItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 800;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-HeavyItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-HeavyItalic.otf");
 }
 
 @font-face {
     font-family: "SF Pro Display";
     font-weight: 900;
     font-style: italic;
-    src: url("../../src/assets/fonts/SF-Pro-Display-BlackItalic.otf");
+    src: url("../../public/fonts/SF-Pro-Display-BlackItalic.otf");
 }

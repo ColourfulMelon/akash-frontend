@@ -1,5 +1,4 @@
 import Image from "next/image";
-import akash from "@/assets/images/akash.svg"
 import {Github, Heart} from "lucide-react";
 import {Separator} from "@/components/ui/separator";
 
@@ -8,7 +7,7 @@ export default function  Footer() {
         <section className='flex flex-col align-middle text-white w-full pb-4 text-center absolute bottom-0'>
 
             <div className='flex justify-center mb-4'>
-                <Image src={akash} alt=""/>
+                <Image src='/images/akash.svg' alt="akash" width={134} height={52}/>
             </div>
 
             <div className="flex mx-auto gap-4 mb-2">
