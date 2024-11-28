@@ -13,23 +13,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en" suppressHydrationWarning={true}>
+        <html lang="en" suppressHydrationWarning={true} className="overflow-hidden">
         <body className='font-SFPro'>
 
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-        >
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+            >
 
-        <SidebarProvider defaultOpen={false}>
-                {children}
-            <Toaster/>
-            <AppSidebar/>
-        </SidebarProvider>
+                <SidebarProvider defaultOpen={false}>
+                    <AppSidebar/>
+                        {children}
+                    <Toaster/>
+                </SidebarProvider>
 
-        </ThemeProvider>
+            </ThemeProvider>
         </body>
 </html>);
 }

@@ -1,64 +1,46 @@
 'use client';
-import {Textarea} from "@/components/ui/textarea";
-import {Sparkles} from "lucide-react";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
-import AdvancedOptions from "@/components/AdvancedOptions";
 import {TypeAnimation} from "react-type-animation";
 import {atom} from "jotai";
-import {useAtom} from "jotai";
-import promptImage from "@/actions/promptImage";
-import {useState} from "react";
-import {useToast} from "@/components/ui/use-toast";
+import PromptInput from "@/components/PromptInput";
+import PromptSuggestion from "@/components/PromptSuggestion";
+import {useAtom} from "jotai/index";
 
 interface TStatus {
-    status: 'idle' | 'generating';
+    // idle: before user clicks generate
+    // typing: type animation started
+    // generating: type animation ended and image is being generated
+    // done: image is done generating
+    status: 'idle' | 'typing' |'generating'| 'done';
     id: string | null;
+    prompt: string;
 }
-export const statusAtom = atom<TStatus>({status: 'idle', id: null});
+export const statusAtom = atom<TStatus>({status: 'idle', id: null, prompt: ''});
 export default function Prompt(){
     const [status, setStatus] = useAtom(statusAtom);
-    const { toast } = useToast();
-    async function generateImage(){
-        // get prompt from textarea
-        const prompt = document.querySelector('textarea')?.value;
-        if (!prompt) return toast({variant: 'destructive', title: 'Error', description: 'Please enter a prompt'});
-        const id = await promptImage(prompt);
-        setStatus({status: 'generating', id: id});
-    }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className={`flex flex-col items-center justify-center ${status.status === 'generating' ? '': ''}`}>
 
-            <TypeAnimation
-                className="mb-4"
-                sequence={[
-                    'Create',
-                ]}
-                wrapper="span"
-                speed={3}
-                style={{ fontSize: '2.5rem', fontWeight: "bold", display: 'inline-block' }}
-                repeat={1}
-            />
-
-            <div className="flex items-center gap-4 w-full justify-center mx-20 max-w-[50rem]">
-                <Textarea placeholder="Enter your prompt here" className="h-20 text-xl animate-glow"/>
-
-                <Sparkles className="cursor-pointer stroke-primary" size={50} onClick={generateImage}/>
+            <div className={`${status.status !== "idle" ? 'animate-fadeOut' : ''}`}>
+                <TypeAnimation
+                    className={`mb-2`}
+                    sequence={[
+                        'What are we creating today?',
+                    ]}
+                    wrapper="span"
+                    speed={40}
+                    style={{ fontSize: '1.75rem', fontWeight: "bold", display: 'inline-block' }}
+                    repeat={1}
+                />
             </div>
 
-            <Accordion  type="single" collapsible>
-                <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-gray-500">Advanced Options</AccordionTrigger>
-                    <AccordionContent className="w-full">
-                        <AdvancedOptions/>
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
+            <PromptInput/>
+
+            <div className="flex gap-4 mt-2">
+                <PromptSuggestion prompt="A cat with wings"/>
+                <PromptSuggestion prompt="A robot in a forest"/>
+                <PromptSuggestion prompt="A city on the moon"/>
+            </div>
 
         </div>
     )

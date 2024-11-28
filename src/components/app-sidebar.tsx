@@ -1,49 +1,71 @@
 'use client';
-import { useState } from 'react';
-import { ImageDialog } from './ImageDialog';
 import {
     Sidebar,
-    SidebarContent,
-    SidebarHeader,
-} from "@/components/ui/sidebar";
-import placeholder from "@/assets/images/image-placeholder.png";
-import Image, {StaticImageData} from "next/image";
-
-const items = Array.from({ length: 10 }, (_, i) => i);
+    SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
+    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger, useSidebar,
+} from '@/components/ui/sidebar';
+import Image from 'next/image';
+import { Book, Compass, Terminal } from 'lucide-react';
+import { useState } from 'react';
 
 export function AppSidebar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState<StaticImageData | null>(null);
-
-    function openDialog(imageSrc: StaticImageData) {
-        setSelectedImage(imageSrc);
-        setIsOpen(true);
-    }
-
-    function closeDialog() {
-        setIsOpen(false);
-        setSelectedImage(null);
-    }
-
+    const {
+        state,
+        open,
+        setOpen,
+        openMobile,
+        setOpenMobile,
+        isMobile,
+        toggleSidebar,
+    } = useSidebar();
+    
     return (
-        <>
-            <Sidebar side="right" variant="inset">
-                <SidebarHeader>
-                    <h2 className="text-2xl font-semibold">Generated Images</h2>
-                </SidebarHeader>
-                <SidebarContent>
-                    {items.map((item, index) => (
-                        <Image
-                            key={index}
-                            src={placeholder}
-                            alt=""
-                            onClick={() => openDialog(placeholder)}
-                            className="cursor-pointer"
-                        />
-                    ))}
-                </SidebarContent>
-            </Sidebar>
-            <ImageDialog isOpen={isOpen} closeDialog={closeDialog} imageSrc={selectedImage} />
-        </>
+        <Sidebar collapsible="icon">
+            <SidebarHeader>
+                <Image src="/images/logo.svg" alt="Alchemist Logo" width={30} height={55} className="w-full p-3"/>
+            </SidebarHeader>
+            <SidebarContent>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu className="">
+                            <SidebarMenuItem className="flex justify-center mb-4 !w-full">
+                                <SidebarMenuButton asChild className="">
+                                    <Terminal/>
+                                    
+                                    {/*<a href="/">*/}
+                                    {/*    <Terminal />*/}
+                                    {/*    <span>Dashboard</span>*/}
+                                    {/*</a>*/}
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            
+                            <SidebarMenuItem className="flex justify-center">
+                                <SidebarMenuButton asChild>
+                                    <Compass/>
+                                    
+                                    {/*<a href="/">*/}
+                                    {/*    <Compass/>*/}
+                                    {/*    <span>Dashboard</span>*/}
+                                    {/*</a>*/}
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+            </SidebarContent>
+            <SidebarFooter>
+                <SidebarMenuItem className="flex justify-center">
+                    <SidebarMenuButton asChild>
+                        <Book/>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem className="flex justify-center mt-6 mb-4">
+                    <SidebarMenuButton asChild>
+                        <Image src="/images/akashLogo.svg" className="w-full" alt="Akash logo" width={30} height={25}/>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarFooter>
+        </Sidebar>
     );
 }

@@ -76,6 +76,10 @@ const config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
+		    fadeOut: {
+			    '0%': { opacity: '1' },
+			    '100%': { opacity: '0' },
+		    },
   			'accordion-down': {
   				from: {
   					height: '0'
@@ -92,15 +96,30 @@ const config = {
   					height: '0'
   				}
   			},
-			glow: {
-				'0%, 100%': { boxShadow: '0 4px 15px rgba(255, 0, 0, 0)' },
-				'50%': { boxShadow: '0 4px 15px rgba(255, 0, 0, 0.6)' },
-			},
+  			glow: {
+  				'0%, 100%': {
+  					boxShadow: '0 4px 15px rgba(255, 0, 0, 0)'
+  				},
+  				'50%': {
+  					boxShadow: '0 4px 15px rgba(255, 0, 0, 0.6)'
+  				}
+  			},
+		    moveToBottom: {
+			    '0%': { transform: 'translateY(0)' },
+			    '100%': { transform: 'translateY(22vh)' },
+		    },
+		    fadeIn: {
+			    '0%': { opacity: '0', transform: 'scale(0.95)' },
+			    '100%': { opacity: '1', transform: 'scale(1)' },
+		    },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-			glow: 'glow 10s infinite',
+  			glow: 'glow 10s infinite',
+		    fadeOut: 'fadeOut 3s 2s forwards',
+		    moveToBottom: 'moveToBottom 1s forwards',
+		    fadeIn: 'fadeIn 1s ease-out forwards',
   		}
   	}
   },
