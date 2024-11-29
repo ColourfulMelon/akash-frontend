@@ -7,8 +7,17 @@ export default async function createPrompt(prompt: PromptCreate): Promise<Prompt
     const url = getRequiredEnvVar('API_ENDPOINT');
     const endpoint = `${url}/prompts`;
     const res = await fetch(endpoint, {
+        cache: 'no-cache',
         method: 'POST',
         body: JSON.stringify(prompt),
+        headers: {
+            'Content-Type': 'application/json',
+        },
     });
-    return await res.json();
+    const json = await res.json();
+    if (!res.ok) {
+        console.error(json);
+        throw new Error(json.error);
+    }
+    return json;
 }
