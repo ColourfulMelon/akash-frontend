@@ -1,12 +1,14 @@
 import Prompt from '@/components/Prompt';
-import Header from '@/components/Header';
 import Image from 'next/image';
+import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 
 export default function Home() {
     
     return (
         <div className='h-full'>
-            <Header/>
+            <header className='flex justify-end items-center w-full py-4 px-8'>
+                <PromptHistorySheet />
+            </header>
             
             <section className="flex flex-col justify-center align-middle h-full">
                 
