@@ -18,9 +18,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="font-SFPro bg-radial-gradient from-bg-gradient-start from-0% to-bg-gradient-end to-100% h-full w-full">
                 <ContextProvider>
                     <main className='w-full'>
-                        <div className='grid grid-rows-[minmax(0,1fr)_minmax(0,max-content)] h-full w-full'>
+                        <div className='grid grid-rows-[minmax(0,1fr)_minmax(0,max-content)] h-dvh w-full'>
                             {children}
-                            <Footer/>
+                            <Footer className='z-40'/>
                         </div>
                     </main>
                     <Toaster/>
