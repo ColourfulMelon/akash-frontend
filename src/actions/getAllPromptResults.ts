@@ -4,9 +4,9 @@ import { getRequiredEnvVar } from '@/lib/utils';
 import { PromptResult, PromptStatus } from '@/lib/zodSchemas';
 
 interface GetAllPromptResultsOptions {
-    clientId?: string;
-    limit?: number;
-    status?: PromptStatus;
+    clientId?: string | null;
+    limit?: number | null;
+    status?: PromptStatus | null;
 }
 
 export default async function getAllPromptResults(options?: GetAllPromptResultsOptions): Promise<PromptResult[]> {
