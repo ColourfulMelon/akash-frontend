@@ -9,7 +9,7 @@ export default function History() {
     const clientId = useClientId();
     const promptResults = useQuery({
         queryKey: ['getAllPromptResults', { clientId }],
-        queryFn: () => getAllPromptResults(clientId!),
+        queryFn: () => getAllPromptResults({ clientId }),
         refetchInterval: 3000,
         enabled: clientId !== null,
     });

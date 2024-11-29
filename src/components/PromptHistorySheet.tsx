@@ -13,7 +13,7 @@ export function PromptHistorySheet() {
     const clientId = useClientId();
     const [prompts, setPrompts] = useState<PromptResult[]>([]);
     const promptsQuery = useQuery({
-        queryKey: ['getAllPromptResults', { clientId }],
+        queryKey: ['getAllPromptResults', clientId, PromptStatus.Completed, 10],
         queryFn: async () => {
             const promptResults = await getAllPromptResults({
                 clientId: clientId!,

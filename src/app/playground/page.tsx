@@ -12,6 +12,7 @@ import getAllPromptResults from '@/actions/getAllPromptResults';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { PromptHistorySheet } from '@/components/PromptHistorySheet';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Playground() {
     const params = useSearchParams();
@@ -19,7 +20,7 @@ export default function Playground() {
     const [isCreatingPrompt, setIsCreatingPrompt] = useState(false);
     
     const pendingPrompts = useQuery({
-        queryKey: ['getAllPromptResults', { clientId }],
+        queryKey: ['getAllPromptResults', clientId, PromptStatus.Pending],
         queryFn: async () => {
             return await getAllPromptResults({
                 clientId: clientId!,
@@ -109,17 +110,18 @@ export default function Playground() {
                                 <CardTitle>Queue</CardTitle>
                             </CardHeader>
                             <CardContent className="h-[300px] overflow-y-auto space-y-4 px-3">
-                                {pendingPrompts.isLoading && <div>Loading...</div>}
+                                {pendingPrompts.isLoading && <Skeleton className='w-full h-24'/>}
                                 {pendingPrompts.data?.map((result) => (
                                     <div key={result.promptId}
                                          className="flex flex-col gap-1 border rounded-md py-2 px-4">
-                                        <div className="mb-2">{result.text}</div>
+                                        <div className="mb-2 line-clamp-1">{result.text}</div>
                                         <Progress value={(result.progress ?? 0) * 100}/>
                                         <div
                                             className="text-sm">{result.statusMessage} ({Math.floor((result.progress ?? 0) * 100)}%)
                                         </div>
                                     </div>
                                 ))}
+                                {pendingPrompts.data?.length === 0 && <div className='text-muted-foreground'>Start generating images to see them here</div>}
                             </CardContent>
                         </Card>
                     </div>
