@@ -1,19 +1,20 @@
 import Prompt from '@/components/Prompt';
-import Header from '@/components/Header';
 import Image from 'next/image';
-import R2Image from "@/components/R2Image";
+import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 
 export default function Home() {
-
+    
     return (
         <div className='h-full'>
-            <Header/>
-
+            <header className='flex justify-end items-center w-full py-4 px-8'>
+                <PromptHistorySheet />
+            </header>
+            
             <section className="flex flex-col justify-center align-middle h-full">
-
+                
                 <Image className='mx-auto mb-12' src={'/images/akash-powered.svg'} alt="akash" width={134} height={52}/>
                 <Prompt/>
-
+            
             </section>
         </div>
     );
