@@ -1,8 +1,6 @@
 import Prompt from '@/components/Prompt';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ImageContainer from '@/components/ImageContainer';
-import { toast } from '@/components/ui/use-toast';
+import Image from 'next/image';
 
 export default function Home() {
     
@@ -12,7 +10,7 @@ export default function Home() {
             
             <section className="flex flex-col justify-center align-middle h-full">
                 
-                <ImageContainer/>
+                <Image className='mx-auto mb-12' src={'/images/akash-powered.svg'} alt="akash" width={134} height={52}/>
                 <Prompt/>
             
             </section>
