@@ -1,44 +1,56 @@
 import { z } from 'zod';
 
-export enum workflows {
-	'Anime',
-	'Photorealistic', // https://civitai.com/models/796382/ultrarealistic-lora-project
-	'Cartoon',
-	'Art',
-	'Abstract',
-	'Pixel',
-	'PixelSorting', // https://civitai.com/models/57963/pixel-sorting
-	'Base', // https://civitai.com/models/215538?modelVersionId=317260 / https://civitai.com/models/141592/pixelwave
-	'Landscape',
-	'Animal'
+export enum Workflows {
+    Realistic = 'realistic',
+    Fantasy = 'fantasy',
+    Anime = 'anime',
 }
 
-export const options = z.object({
-	optimisePrompt: z.boolean().optional(),
-	faceDetailer: z.boolean().optional(),
-	workflowOverride: z.nativeEnum(workflows).optional(),
-	outputResolution: z.number().int().min(1024).max(8192).optional(),
+export enum Layout {
+    Landscape = 'landscape',
+    Portrait = 'portrait',
+    Square = 'square',
+}
+
+export enum PromptStatus {
+    Pending = 'pending',
+    Completed = 'completed',
+    Failed = 'failed',
+}
+
+export const zPrompt = z.object({
+    clientId: z.string().uuid(),
+    promptId: z.string().uuid(),
+    text: z.string(),
+    enhancedText: z.string().nullable(),
+    workflow: z.nativeEnum(Workflows),
+    layout: z.nativeEnum(Layout),
+    seed: z.number().int(),
 });
 
-export const zTask = z.object({
-	id: z.string().uuid(),
-	prompt: z.string(),
-	options: options.optional(),
-});
-export type Task = z.infer<typeof zTask>;
-
-export const zTaskCreate = zTask.omit({ id: true });
-export type TaskCreate = z.infer<typeof zTaskCreate>;
-
-export const zTaskStatus = z.object({
-	id: z.string().uuid(),
-	status: z.enum(['pending', 'completed']),
-	statusMessage: z.string(),
-	progress: z.number().int().min(0).max(1),
+export const zPromptCreate = z.object({
+    clientId: z.string().uuid(),
+    text: z.string(),
+    enhanceText: z.boolean().optional(),
+    workflowOverride: z.nativeEnum(Workflows).optional(),
+    layoutOverride: z.nativeEnum(Layout).optional(),
+    seedOverride: z.number().int().optional(),
 });
 
-export const zTaskResult = z.object({
-	id: z.string().uuid(),
-	prompt: z.string(),
-	result: z.instanceof(Buffer),
+export const zPromptResult = z.object({
+    clientId: z.string().uuid(),
+    promptId: z.string().uuid(),
+    text: z.string(),
+    enhancedText: z.string().nullable(),
+    workflow: z.nativeEnum(Workflows),
+    layout: z.nativeEnum(Layout),
+    seed: z.number().int(),
+    status: z.nativeEnum(PromptStatus),
+    statusMessage: z.string().nullable(),
+    progress: z.number().int().min(0).max(1).nullable(),
+    outputFilename: z.string().nullable(),
 });
+
+export type Prompt = z.infer<typeof zPrompt>;
+export type PromptCreate = z.infer<typeof zPromptCreate>;
+export type PromptResult = z.infer<typeof zPromptResult>;
