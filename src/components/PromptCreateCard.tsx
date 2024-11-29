@@ -104,7 +104,7 @@ export const PromptCreateCard = (
     }
     
     return (
-        <Card className="min-w-48 max-w-80">
+        <Card className="w-full">
             <CardHeader className="p-3 pt-4">
                 <CardTitle>Prompt</CardTitle>
             </CardHeader>
@@ -120,6 +120,7 @@ export const PromptCreateCard = (
                                         <AutosizeTextarea
                                             className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                                             maxHeight={200}
+                                            placeholder='Type your prompt here'
                                             {...field}
                                         />
                                     </FormControl>
