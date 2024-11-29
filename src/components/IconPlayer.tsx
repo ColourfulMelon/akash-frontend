@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { statusAtom } from '@/components/Prompt';
 import { useAtomValue } from 'jotai/index';
+import animatedIcon from '@/components/assets/animated_icon.json';
 
 export default function IconPlayer({ className }: { className?: string }) {
     const playerRef = useRef(null);
@@ -19,7 +20,7 @@ export default function IconPlayer({ className }: { className?: string }) {
         <div className={cn('flex justify-center items-center', className)}>
             <Player
                 ref={playerRef}
-                icon={'/icons/image.json'}
+                icon={animatedIcon}
                 size={400}
                 // @ts-ignore
                 onComplete={() => playerRef.current?.playFromBeginning()}
