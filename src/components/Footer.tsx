@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { Github, Heart } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
-export default function Footer() {
+export default function Footer({ className }: { className?: string }) {
     return (
-        <section className="flex flex-col align-middle text-white w-full p-4 text-center">
+        <section className={cn("flex flex-col align-middle text-white w-full p-4 text-center", className)}>
             
             {/*<div className='flex justify-center mb-4'>*/}
             {/*    <Image src='/images/akash-powered.svg' alt="akash" width={134} height={52}/>*/}
