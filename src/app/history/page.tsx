@@ -13,14 +13,14 @@ export default function History() {
         refetchInterval: 3000,
         enabled: clientId !== null,
     });
-    
+
     return (
         <div className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)]">
             <div className="flex justify-between items-center w-full py-4 px-8">
                 <div className="text-4xl">History</div>
                 <Clock/>
             </div>
-            <div className='w-full overflow-auto'>
+            <div className='w-full overflow-auto px-10'>
                 <div className=''>
                     <div className='mx-auto flex justify-center gap-4'>
                         <div className="flex-1 flex flex-col gap-4">
