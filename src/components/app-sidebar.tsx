@@ -1,71 +1,101 @@
 'use client';
+
+import * as React from 'react';
+import { Aperture, Book, History, Terminal } from 'lucide-react';
 import {
     Sidebar,
-    SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
-    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger, useSidebar,
+    SidebarContent,
+    SidebarFooter, SidebarGroup,
+    SidebarHeader, SidebarMenu, SidebarMenuItem,
+    SidebarRail,
+    useSidebar,
 } from '@/components/ui/sidebar';
 import Image from 'next/image';
-import { Book, Compass, Terminal } from 'lucide-react';
-import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { usePathname, useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { Logo } from '@/components/Logo';
+import Link from 'next/link';
 
-export function AppSidebar() {
-    const {
-        state,
-        open,
-        setOpen,
-        openMobile,
-        setOpenMobile,
-        isMobile,
-        toggleSidebar,
-    } = useSidebar();
-    
+
+const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeof Button> & { label: string }) => {
+    const { open } = useSidebar();
+    const currentPathname = usePathname();
+    const router = useRouter();
+    const targetPathname = `/${label}`.toLowerCase();
     return (
-        <Sidebar collapsible="icon">
+        <Button
+            variant="ghost"
+            className={cn(
+                'flex items-center justify-start p-2 gap-2',
+                currentPathname.toLowerCase() === targetPathname.toLowerCase() ? 'bg-accent' : '',
+            )}
+            {...props}
+            onClick={(e) => {
+                e.stopPropagation();
+                router.push(targetPathname);
+            }}
+        
+        >
+            {children}
+            {open && label}
+        </Button>
+    );
+};
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+    const { open, setOpen } = useSidebar();
+    return (
+        <Sidebar collapsible="icon" {...props} onClick={(e) => {
+            if (!open) {
+                setOpen(true);
+            }
+        }}>
             <SidebarHeader>
-                <Image src="/images/logo.svg" alt="Alchemist Logo" width={30} height={55} className="w-full p-3"/>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <div className={cn(
+                            open ? 'flex items-center justify-center hover:bg-accent ' : '',
+                            'py-2 rounded-md hover:cursor-pointer',
+                        )}>
+                            <Logo iconOnly={!open} className="h-10"/>
+                        </div>
+                    </SidebarMenuItem>
+                </SidebarMenu>
             </SidebarHeader>
-            <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu className="">
-                            <SidebarMenuItem className="flex justify-center mb-4 !w-full">
-                                <SidebarMenuButton asChild className="">
-                                    <Terminal/>
-                                    
-                                    {/*<a href="/">*/}
-                                    {/*    <Terminal />*/}
-                                    {/*    <span>Dashboard</span>*/}
-                                    {/*</a>*/}
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            
-                            <SidebarMenuItem className="flex justify-center">
-                                <SidebarMenuButton asChild>
-                                    <Compass/>
-                                    
-                                    {/*<a href="/">*/}
-                                    {/*    <Compass/>*/}
-                                    {/*    <span>Dashboard</span>*/}
-                                    {/*</a>*/}
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
-                    </SidebarGroupContent>
+            <SidebarContent className="flex justify-between overflow-hidden">
+                <SidebarGroup className="pt-6">
+                    <SidebarMenu className="gap-2">
+                        <SidebarButton label="Playground">
+                            <Terminal className="!w-6 !h-6"/>
+                        </SidebarButton>
+                        <SidebarButton label={'History'}>
+                            <History className="!w-6 !h-6"/>
+                        </SidebarButton>
+                        <SidebarButton label={'Explore'}>
+                            <Aperture className="!w-6 !h-6"/>
+                        </SidebarButton>
+                    </SidebarMenu>
+                </SidebarGroup>
+                <SidebarGroup className="pt-6">
+                    <SidebarMenu className="gap-2">
+                        <SidebarButton label={'Documentation'} className="justify-center">
+                            <Book className="!w-6 !h-6"/>
+                        </SidebarButton>
+                    </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter>
-                <SidebarMenuItem className="flex justify-center">
-                    <SidebarMenuButton asChild>
-                        <Book/>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem className="flex justify-center mt-6 mb-4">
-                    <SidebarMenuButton asChild>
-                        <Image src="/images/akashLogo.svg" className="w-full" alt="Akash logo" width={30} height={25}/>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
+            <SidebarFooter className="flex items-center justify-center py-4">
+                <Link href={'https://akash.network'} target={'_blank'} onClick={(e) => e.stopPropagation()}>
+                    {!open &&
+                        <Image src={'/images/akashLogo.svg'} alt="akash" width={174} height={150} className="h-10"/>}
+                    {open &&
+                        <Image src={'/images/akash-powered.svg'} alt="akash" width={134} height={52}/>}
+                </Link>
             </SidebarFooter>
+            <div onClick={() => setOpen(!open)}>
+                <SidebarRail/>
+            </div>
         </Sidebar>
     );
 }
