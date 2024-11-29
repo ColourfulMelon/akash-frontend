@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 
 export default function Playground() {
     const params = useSearchParams();
@@ -89,7 +90,7 @@ export default function Playground() {
         <div className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)]">
             <div className="flex justify-between items-center w-full py-4 px-8">
                 <div className="text-4xl">Playground</div>
-                <Clock/>
+                <PromptHistorySheet />
             </div>
             <div className="flex px-8 pt-4 pb-2">
                 <div className="flex flex-col h-full gap-8 w-80 min-h-full">
