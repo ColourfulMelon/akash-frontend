@@ -104,7 +104,7 @@ export const PromptCreateCard = (
     }
     
     return (
-        <Card className="min-w-48 max-w-80">
+        <Card className="w-full">
             <CardHeader className="p-3 pt-4">
                 <CardTitle>Prompt</CardTitle>
             </CardHeader>
