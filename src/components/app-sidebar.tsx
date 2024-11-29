@@ -45,6 +45,8 @@ const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeo
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { open, setOpen } = useSidebar();
+    const router = useRouter();
+    
     return (
         <Sidebar collapsible="icon" {...props} onClick={(e) => {
             if (!open) {
@@ -53,7 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         }}>
             <SidebarHeader>
                 <SidebarMenu>
-                    <SidebarMenuItem>
+                    <SidebarMenuItem onClick={() => router.push('/')}>
                         <div className={cn(
                             open ? 'flex items-center justify-center hover:bg-accent ' : '',
                             'py-2 rounded-md hover:cursor-pointer',
