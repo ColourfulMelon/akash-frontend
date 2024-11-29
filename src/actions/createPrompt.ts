@@ -14,6 +14,10 @@ export default async function createPrompt(prompt: PromptCreate): Promise<Prompt
             'Content-Type': 'application/json',
         },
     });
+
+    if (res.status === 404){
+        throw new Error('Not Found');
+    }
     const json = await res.json();
     if (!res.ok) {
         console.error(json);

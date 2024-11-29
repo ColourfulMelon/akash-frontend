@@ -24,11 +24,11 @@ export default async function getAllPromptResults(options?: GetAllPromptResultsO
     console.log(endpoint)
     const res = await fetch(endpoint);
     const json = await res.json();
-    
+
     if (!res.ok) {
         console.error(json);
         throw new Error(json.error);
     }
-    
+
     return json;
 }

@@ -226,3 +226,46 @@
     font-style: italic;
     src: url("../../public/fonts/SF-Pro-Display-BlackItalic.otf");
 }
+
+
+.fade-edges {
+    position: relative;
+}
+
+.fade-edges:before,
+.fade-edges:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50px; /* Adjust height as needed */
+    pointer-events: none;
+}
+
+.fade-edges:before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.fade-edges:after {
+    bottom: 0;
+    background: linear-gradient(to top, #181616, rgba(255, 255, 255, 0));
+}
+
+
+.fadedScrollBottom {
+    content: '';
+    margin-top: -40px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(251, 251, 251, 0) 0%, #191516 100%);
+    position: relative;
+}
+
+.fadedScrollTop {
+    content: '';
+    margin-bottom: -40px;
+    height: 40px;
+    background: linear-gradient(to top, rgba(251, 251, 251, 0) 0%, #191516 100%);
+    position: relative;
+    z-index: 1;
+}

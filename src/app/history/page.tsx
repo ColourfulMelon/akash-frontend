@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import { useClientId } from '@/hooks/use-client-id';
+import R2Image from "@/components/R2Image";
+import useMasonry from "@/components/hooks/useMasonry";
 
 export default function History() {
     const clientId = useClientId();
@@ -14,122 +16,34 @@ export default function History() {
         enabled: clientId !== null,
     });
 
+    const masonryContainer = useMasonry();
+
     return (
         <div className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)]">
             <div className="flex justify-between items-center w-full py-4 px-8">
                 <div className="text-4xl">History</div>
                 <Clock/>
             </div>
-            <div className='w-full overflow-auto px-10'>
-                <div className=''>
-                    <div className='mx-auto flex justify-center gap-4'>
-                        <div className="flex-1 flex flex-col gap-4">
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex-1 flex flex-col gap-4">
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex-1 flex flex-col gap-4">
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex-1 flex flex-col gap-4">
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="relative h-full overflow-hidden rounded-md">
-                                    <Image src={'https://placehold.co/832x1216.png'} width={832} height={1216}
-                                           alt={'placehold'}/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="fadedScrollTop"></div>
+            <div className='w-full overflow-auto px-10 py-5 grid items-start gap-4 sm:grid-cols-3 md:gap-6' ref={masonryContainer}>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
+                <R2Image fileName={'1dd83052-4c66-4391-ab81-ece09b65434d.png'}/>
             </div>
+            <div className="fadedScrollBottom"></div>
         </div>
     );
 }
