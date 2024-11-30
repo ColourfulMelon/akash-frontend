@@ -1,15 +1,16 @@
 'use client';
-import { Clock } from 'lucide-react';
-import { useQuery } from '@tanstack/react-query';
+import {Clock} from 'lucide-react';
+import {useQuery} from '@tanstack/react-query';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import PromptImage from '@/components/PromptImage';
 import useMasonry from '@/components/hooks/useMasonry';
 import LoadingComponent from '@/components/LoadingComponent';
+import {PromptStatus} from "@/lib/zodSchemas";
 
 export default function Explore() {
     const promptResults = useQuery({
         queryKey: ['getAllPromptResults'],
-        queryFn: () => getAllPromptResults(),
+        queryFn: () => getAllPromptResults({status: PromptStatus.Completed}),
         refetchInterval: 3000,
         enabled: true,
     });
