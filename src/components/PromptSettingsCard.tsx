@@ -26,14 +26,14 @@ export function PromptSettingsCard({
                         readOnly={true}
                     />
                 </div>
-                <div>
+                feat: {enhancedText && <div>
                     <div className="font-bold text-lg">Enhanced Prompt</div>
                     <AutosizeTextarea
                         className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                        value={enhancedText ?? ''}
+                        value={enhancedText}
                         readOnly={true}
                     />
-                </div>
+            </div>}
                 <div className="flex flex-wrap gap-2 w-full justify-evenly items-center">
                     <Badge className="space-x-1">
                         <p className="font-black">Workflow:</p>
