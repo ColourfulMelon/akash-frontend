@@ -12,7 +12,7 @@ import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { z } from 'zod';
-import { Layout, PromptCreate, Workflows } from '@/lib/zodSchemas';
+import { Layout, PromptCreate, PromptCreateForm, Workflows, zPromptCreateForm } from '@/lib/zodSchemas';
 import { useForm } from 'react-hook-form';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -33,15 +33,6 @@ const workflows = [
         label: 'Anime',
     },
 ];
-
-const formSchema = z.object({
-    text: z.string(),
-    enhanceText: z.boolean().optional(),
-    // Workaround for parsing issue when user deselects from toggle group
-    layoutOverride: z.nativeEnum(Layout).or(z.literal('')).optional(),
-    workflowOverride: z.nativeEnum(Workflows).optional(),
-    seedOverride: z.coerce.number().int().optional(),
-});
 
 export const PromptCreateCard = (
     {
@@ -67,7 +58,7 @@ export const PromptCreateCard = (
     const [workflowOpen, setWorkflowOpen] = useState(false);
     const clientId = useClientId();
     
-    const form = useForm<z.infer<typeof formSchema>>({
+    const form = useForm<PromptCreateForm>({
         defaultValues: {
             text: defaultPromptText,
             enhanceText: defaultEnhanceText,
@@ -75,10 +66,10 @@ export const PromptCreateCard = (
             layoutOverride: defaultLayoutOverride,
             seedOverride: defaultSeedOverride,
         },
-        resolver: zodResolver(formSchema),
+        resolver: zodResolver(zPromptCreateForm),
     });
     
-    function handleSubmit(data: z.infer<typeof formSchema>) {
+    function handleSubmit(data: PromptCreateForm) {
         toast({
             title: 'You submitted the following values:',
             description: (
