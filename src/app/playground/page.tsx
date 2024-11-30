@@ -36,12 +36,11 @@ export default function Playground() {
         enabled: clientId !== null,
     });
     
-    const lastCompletedPrompt = useQuery({
-        queryKey: ['getAllPromptResults', clientId, PromptStatus.Completed, 1],
+    const lastPrompt = useQuery({
+        queryKey: ['getAllPromptResults', clientId, 1],
         queryFn: async () => {
             const list = await getAllPromptResults({
                 clientId: clientId!,
-                status: PromptStatus.Completed,
                 limit: 1,
             });
             if (list.length === 1) {
@@ -98,24 +97,6 @@ export default function Playground() {
         setIsCreatingPrompt(true);
         await createPromptMutation.mutateAsync(prompt);
     };
-    
-    async function copyImg(src: string) {
-        const img = await fetch(src);
-        const imgBlob = await img.blob();
-        try {
-            await navigator.clipboard.write([
-                new ClipboardItem({
-                    [imgBlob.type]: imgBlob,
-                }),
-            ]);
-            toast({
-                title: 'Copied',
-                description: 'Image copied to clipboard',
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    }
     
     useEffect(() => {
         const paramsSchema = z.object({
@@ -186,20 +167,9 @@ export default function Playground() {
                 </div>
                 <div className="flex w-full">
                     <div className="m-auto">
-                        {lastCompletedPrompt.data && <div className="flex flex-row gap-2">
+                        {lastPrompt.data && <div className="flex flex-row gap-2">
                             <div className="flex flex-col items-center gap-2 max-w-screen-md">
-                                <PromptImage promptResult={lastCompletedPrompt.data}/>
-                            </div>
-                            <div className="flex flex-col items-center gap-4">
-                                <Download className="w-6 h-6 cursor-pointer"/>
-                                <Copy
-                                    className="w-6 h-6 cursor-pointer"
-                                    onClick={() => {
-                                        if (lastCompletedPrompt.data?.outputFilename) {
-                                            void copyImg(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/outputs/${lastCompletedPrompt.data.outputFilename}`);
-                                        }
-                                    }}
-                                />
+                                <PromptImage promptResult={lastPrompt.data}/>
                             </div>
                         </div>}
                     </div>

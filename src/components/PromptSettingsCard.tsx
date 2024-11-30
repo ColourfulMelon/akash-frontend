@@ -23,6 +23,7 @@ export function PromptSettingsCard({
                     <AutosizeTextarea
                         className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                         value={text}
+                        readOnly={true}
                     />
                 </div>
                 <div>
@@ -30,9 +31,10 @@ export function PromptSettingsCard({
                     <AutosizeTextarea
                         className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                         value={enhancedText ?? ''}
+                        readOnly={true}
                     />
                 </div>
-                <div className="flex flex-wrap gap-2 w-full justify-evenly items-center mt-4">
+                <div className="flex flex-wrap gap-2 w-full justify-evenly items-center">
                     <Badge className="space-x-1">
                         <p className="font-black">Workflow:</p>
                         <p>{
