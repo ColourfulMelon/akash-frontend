@@ -27,7 +27,7 @@ export default function Explore() {
                 {!promptResults.data && <LoadingComponent />}
 
                 {promptResults.data && promptResults.data.map((result) => (
-                    <PromptImage key={result.promptId} file={result}/>
+                    <PromptImage key={result.promptId} promptResult={result}/>
                 ))}
             </div>
             <div className="fadedScrollBottom"></div>
