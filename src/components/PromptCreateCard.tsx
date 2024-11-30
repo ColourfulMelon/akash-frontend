@@ -1,8 +1,8 @@
 'use client';
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { AutosizeTextarea } from '@/components/AutoResizeTextarea';
-import { useMemo, useState } from 'react';
+import {AutosizeTextarea, AutosizeTextAreaRef} from '@/components/AutoResizeTextarea';
+import {useMemo, useRef, useState} from 'react';
 import { cn } from '@/lib/utils';
 import { Check, ChevronRight, ChevronsUpDown, Sparkles } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
@@ -18,6 +18,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/components/ui/use-toast';
 import { useClientId } from '@/hooks/use-client-id';
+import {atom} from "jotai";
+import {useAtom} from "jotai/index";
+export const TARef = atom<AutosizeTextAreaRef | null>(null);
 
 const workflows = [
     {
@@ -66,7 +69,7 @@ export const PromptCreateCard = (
     const [advancedSettingsOpen, setAdvancedSettingsOpen] = useState(false);
     const [workflowOpen, setWorkflowOpen] = useState(false);
     const clientId = useClientId();
-    
+
     const form = useForm<z.infer<typeof formSchema>>({
         defaultValues: {
             text: defaultPromptText,
@@ -77,7 +80,7 @@ export const PromptCreateCard = (
         },
         resolver: zodResolver(formSchema),
     });
-    
+
     function handleSubmit(data: z.infer<typeof formSchema>) {
         toast({
             title: 'You submitted the following values:',
@@ -102,7 +105,14 @@ export const PromptCreateCard = (
             layoutOverride: data.layoutOverride === '' ? undefined : data.layoutOverride,
         });
     }
-    
+
+    // get ref of textarea
+    const [textArea, setTextArea] = useAtom(TARef);
+
+    const { register } = useForm();
+    const { ref, ...rest } = register('text');
+
+
     return (
         <Card className="w-full">
             <CardHeader className="p-3 pt-4">
@@ -121,7 +131,11 @@ export const PromptCreateCard = (
                                             className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                                             maxHeight={200}
                                             placeholder='Type your prompt here'
-                                            {...field}
+                                            {...rest}
+                                            ref={(e) => {
+                                                field.ref(e);
+                                                setTextArea(e);
+                                            }}
                                         />
                                     </FormControl>
                                     <FormMessage/>

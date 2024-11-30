@@ -7,6 +7,7 @@ import { useClientId } from '@/hooks/use-client-id';
 import R2Image from "@/components/R2Image";
 import useMasonry from "@/components/hooks/useMasonry";
 import Loading from "@/app/loading";
+import LoadingComponent from "@/components/LoadingComponent";
 
 export default function Explore() {
     const promptResults = useQuery({
@@ -26,7 +27,7 @@ export default function Explore() {
             </div>
             <div className="fadedScrollTop"></div>
             <div className='w-full overflow-auto px-10 py-5 grid items-start gap-4 sm:grid-cols-3 md:gap-6' ref={masonryContainer}>
-                {!promptResults.data && <Loading />}
+                {!promptResults.data && <LoadingComponent />}
 
                 {promptResults.data && promptResults.data.map((result) => (
                     <R2Image key={result.promptId} file={result} />
