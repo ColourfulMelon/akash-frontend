@@ -10,12 +10,12 @@ import { toast } from '@/components/ui/use-toast';
 import { useEffect, useState } from 'react';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Check, Copy, Download } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Spinner } from '@/components/ui/Spinner';
 import PromptImage from '@/components/PromptImage';
+import { PromptProgressBar } from '@/components/PromptProgressBar';
 
 export default function Playground() {
     const params = useSearchParams();
@@ -173,10 +173,8 @@ export default function Playground() {
                                     <div key={result.promptId}
                                          className="flex flex-col gap-1 border rounded-md py-2 px-4">
                                         <div className="mb-2 line-clamp-1">{result.text}</div>
-                                        <Progress value={(result.progress ?? 0) * 100}/>
-                                        <div
-                                            className="text-sm">{result.statusMessage} ({Math.floor((result.progress ?? 0) * 100)}%)
-                                        </div>
+                                        <PromptProgressBar progress={result.progress ?? 0}
+                                                           message={result.statusMessage ?? 'In queue'}/>
                                     </div>
                                 ))}
                                 {pendingPrompts.data?.length === 0 &&
