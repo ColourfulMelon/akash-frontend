@@ -1,13 +1,10 @@
 'use client';
 import { Clock } from 'lucide-react';
-import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import getAllPromptResults from '@/actions/getAllPromptResults';
-import { useClientId } from '@/hooks/use-client-id';
-import R2Image from "@/components/R2Image";
-import useMasonry from "@/components/hooks/useMasonry";
-import Loading from "@/app/loading";
-import LoadingComponent from "@/components/LoadingComponent";
+import PromptImage from '@/components/PromptImage';
+import useMasonry from '@/components/hooks/useMasonry';
+import LoadingComponent from '@/components/LoadingComponent';
 
 export default function Explore() {
     const promptResults = useQuery({
@@ -30,7 +27,7 @@ export default function Explore() {
                 {!promptResults.data && <LoadingComponent />}
 
                 {promptResults.data && promptResults.data.map((result) => (
-                    <R2Image key={result.promptId} file={result} />
+                    <PromptImage key={result.promptId} file={result}/>
                 ))}
             </div>
             <div className="fadedScrollBottom"></div>
