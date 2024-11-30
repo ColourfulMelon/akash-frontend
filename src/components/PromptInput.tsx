@@ -40,6 +40,9 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
     const [workflowOpen, setWorkflowOpen] = useState(false);
     
     const form = useForm<PromptCreateForm>({
+        defaultValues: {
+            enhanceText: true,
+        },
         resolver: zodResolver(zPromptCreateForm),
     });
     
