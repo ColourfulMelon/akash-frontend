@@ -10,10 +10,12 @@ export default function PromptImage({ promptResult }: { promptResult: PromptResu
 	};
 	return (
 		<div>
-			<Image src={imgURL}
-			       alt={promptResult.text}
-			       width={DIMENSIONS[promptResult.layout].width}
-			       height={DIMENSIONS[promptResult.layout].height}
+			<Image
+				className="rounded-md"
+				src={imgURL}
+				alt={promptResult.text}
+				width={DIMENSIONS[promptResult.layout].width}
+				height={DIMENSIONS[promptResult.layout].height}
 			/>
 		</div>
 	);
