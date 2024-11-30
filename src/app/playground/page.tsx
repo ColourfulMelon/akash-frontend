@@ -14,10 +14,8 @@ import { Progress } from '@/components/ui/progress';
 import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Check, Copy, Download } from 'lucide-react';
-import Image from 'next/image';
 import { Spinner } from '@/components/ui/Spinner';
-import { AutosizeTextarea } from '@/components/AutoResizeTextarea';
-import { Badge } from '@/components/ui/badge';
+import PromptImage from '@/components/PromptImage';
 
 export default function Playground() {
     const params = useSearchParams();
@@ -192,49 +190,7 @@ export default function Playground() {
                     <div className="m-auto">
                         {lastCompletedPrompt.data && <div className="flex flex-row gap-2">
                             <div className="flex flex-col items-center gap-2 max-w-screen-md">
-                                <Image
-                                    className="rounded-md"
-                                    src={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/outputs/${lastCompletedPrompt.data.outputFilename}`}
-                                    width={832} height={1216} alt={lastCompletedPrompt.data.text}
-                                />
-                                <Card className="w-full">
-                                    <CardContent className="flex flex-col gap-4 p-4">
-                                        <div>
-                                            <div className="font-bold text-lg">Prompt</div>
-                                            <AutosizeTextarea
-                                                className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                                                value={lastCompletedPrompt.data.text}
-                                            />
-                                        </div>
-                                        <div>
-                                            <div className="font-bold text-lg">Enhanced Prompt</div>
-                                            <AutosizeTextarea
-                                                className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                                                value={lastCompletedPrompt.data.enhancedText ?? ''}
-                                            />
-                                        </div>
-                                        <div className="flex flex-wrap w-full justify-evenly items-center mt-4">
-                                            <Badge className="space-x-1">
-                                                <p className="font-black">Workflow:</p>
-                                                <p>{
-                                                    lastCompletedPrompt.data.workflow.charAt(0).toUpperCase() +
-                                                    lastCompletedPrompt.data.workflow.slice(1)
-                                                }</p>
-                                            </Badge>
-                                            <Badge className="space-x-1">
-                                                <p className="font-black">Layout:</p>
-                                                <p>{
-                                                    lastCompletedPrompt.data.layout.charAt(0).toUpperCase() +
-                                                    lastCompletedPrompt.data.layout.slice(1)
-                                                }</p>
-                                            </Badge>
-                                            <Badge className="space-x-1">
-                                                <p className="font-black">Seed:</p>
-                                                <p>{lastCompletedPrompt.data.seed}</p>
-                                            </Badge>
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                                <PromptImage promptResult={lastCompletedPrompt.data}/>
                             </div>
                             <div className="flex flex-col items-center gap-4">
                                 <Download className="w-6 h-6 cursor-pointer"/>
