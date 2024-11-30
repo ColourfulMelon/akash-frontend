@@ -1,18 +1,18 @@
 'use client';
 import {ArrowUpRight} from "lucide-react";
-import {useEffect} from "react";
-import {useAtom} from "jotai/index";
+import {useAtom, useAtomValue} from "jotai/index";
 import {statusAtom} from "@/components/HomePagePrompt";
+import {TARef} from "@/components/PromptCreateCard";
 
 export default function PromptSuggestion({prompt}: {prompt: string}){
 
-    const [status, setStatus] = useAtom(statusAtom);
-    const textArea = useAtomValue(TARef);
+    const status = useAtomValue(statusAtom);
+    const textAreaRef = useAtomValue(TARef);
 
     function setPrompt(){
-        console.log(textArea);
-        if (!textArea) return;
-        textArea.value = prompt
+        console.log(textAreaRef);
+        if (!textAreaRef) return;
+        textAreaRef.textArea.value = prompt
     }
 
 

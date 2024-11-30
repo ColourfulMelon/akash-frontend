@@ -11,14 +11,13 @@ import { Button } from '@/components/ui/button';
 import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { z } from 'zod';
 import { Layout, PromptCreate, PromptCreateForm, Workflows, zPromptCreateForm } from '@/lib/zodSchemas';
 import { useForm } from 'react-hook-form';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/components/ui/use-toast';
 import { useClientId } from '@/hooks/use-client-id';
-import {atom} from "jotai";
+import {atom, useSetAtom} from "jotai";
 import {useAtom} from "jotai/index";
 export const TARef = atom<AutosizeTextAreaRef | null>(null);
 
@@ -98,10 +97,7 @@ export const PromptCreateCard = (
     }
 
     // get ref of textarea
-    const [textArea, setTextArea] = useAtom(TARef);
-
-    const { register } = useForm();
-    const { ref, ...rest } = register('text');
+    const setTextArea = useSetAtom(TARef);
 
 
     return (
@@ -122,7 +118,7 @@ export const PromptCreateCard = (
                                             className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                                             maxHeight={200}
                                             placeholder='Type your prompt here'
-                                            {...rest}
+                                            {...field}
                                             ref={(e) => {
                                                 field.ref(e);
                                                 setTextArea(e);
