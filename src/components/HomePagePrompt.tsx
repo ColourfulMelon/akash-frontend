@@ -2,7 +2,6 @@
 import { TypeAnimation } from 'react-type-animation';
 import { atom } from 'jotai';
 import PromptInput from '@/components/PromptInput';
-import PromptSuggestion from '@/components/PromptSuggestion';
 import { useAtom } from 'jotai/index';
 import { PromptCreate } from '@/lib/zodSchemas';
 import { useRouter } from 'next/navigation';
@@ -43,13 +42,7 @@ export default function HomePagePrompt() {
                 />
             </div>
             
-            <PromptInput onSubmit={goToPlayground}/>
-            
-            <div className="flex gap-4 mt-2">
-                <PromptSuggestion prompt="A cat with wings"/>
-                <PromptSuggestion prompt="A robot in a forest"/>
-                <PromptSuggestion prompt="A city on the moon"/>
-            </div>
+            <PromptInput onSubmit={goToPlayground} suggestions={['A cat with wings', 'A robot in a forest', 'A city at night']}/>
         
         </div>
     );
