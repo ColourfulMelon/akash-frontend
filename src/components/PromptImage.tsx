@@ -74,7 +74,7 @@ function PromptCompletedImage({
                             <PopoverTrigger>
                                 <Info className="w-6 h-6 "/>
                             </PopoverTrigger>
-                            <PopoverContent>
+                            <PopoverContent className="lg:w-96">
                                 <PromptSettingsCard
                                     text={text}
                                     workflow={workflow}
