@@ -6,14 +6,12 @@ import { cn } from '@/lib/utils';
 export default function Footer({ className }: { className?: string }) {
     return (
         <section className={cn("flex flex-col align-middle text-white w-full p-4 text-center", className)}>
-            
+
             {/*<div className='flex justify-center mb-4'>*/}
             {/*    <Image src='/images/akash-powered.svg' alt="akash" width={134} height={52}/>*/}
             {/*</div>*/}
-            
+
             <div className="flex mx-auto gap-2">
-                <a href="" target="_blank" className="underline">Docs</a>
-                <Separator orientation="vertical" className='bg-primary-foreground'/>
                 <div className="flex">
                     <Github/>
                     <a href="https://github.com/Dev3-Studio/akash-frontend" target="_blank" className="underline">
@@ -26,9 +24,9 @@ export default function Footer({ className }: { className?: string }) {
                     <a href="https://dev3.studio" className="underline" target="_blank">Dev3 Studio</a>
                 </p>
             </div>
-            
+
             {/*<p>Animated Icon by <a target="_blank" className="underline" href="https://lordicon.com/">Lordicon.com</a></p>*/}
-        
+
         </section>
     );
 }

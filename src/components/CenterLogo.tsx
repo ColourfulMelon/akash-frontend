@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import { useAtom } from 'jotai/index';
-import { statusAtom } from '@/components/Prompt';
+import { statusAtom } from '@/components/HomePagePrompt';
 
 export default function CenterLogo({ ref }: { ref: React.RefObject<HTMLImageElement> }) {
-    const [status, setStatus] = useAtom(statusAtom);
+    const [status] = useAtom(statusAtom);
     
     return (
         <Image
