@@ -28,7 +28,7 @@ export default function History() {
             <div className='w-full overflow-auto px-10 py-5 grid items-start gap-4 sm:grid-cols-3 md:gap-6 row-span-1 h-full' ref={masonryContainer}>
                 {!promptResults.data && <LoadingComponent />}
                 {promptResults.data && promptResults.data.map((result) => (
-                    <PromptImage key={result.promptId} file={result}/>
+                    <PromptImage key={result.promptId} promptResult={result}/>
                 ))}
             </div>
             <div className="fadedScrollBottom"></div>
