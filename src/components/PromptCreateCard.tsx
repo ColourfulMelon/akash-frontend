@@ -1,8 +1,8 @@
 'use client';
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import {AutosizeTextarea, AutosizeTextAreaRef} from '@/components/AutoResizeTextarea';
-import {useMemo, useRef, useState} from 'react';
+import { AutosizeTextarea } from '@/components/AutoResizeTextarea';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Check, ChevronRight, ChevronsUpDown, Sparkles } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
@@ -17,9 +17,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/components/ui/use-toast';
 import { useClientId } from '@/hooks/use-client-id';
-import {atom, useSetAtom} from "jotai";
-import {useAtom} from "jotai/index";
-export const TARef = atom<AutosizeTextAreaRef | null>(null);
 
 const workflows = [
     {
@@ -95,11 +92,7 @@ export const PromptCreateCard = (
             layoutOverride: data.layoutOverride === '' ? undefined : data.layoutOverride,
         });
     }
-
-    // get ref of textarea
-    const setTextArea = useSetAtom(TARef);
-
-
+    
     return (
         <Card className="w-full">
             <CardHeader className="p-3 pt-4">
@@ -119,10 +112,6 @@ export const PromptCreateCard = (
                                             maxHeight={200}
                                             placeholder='Type your prompt here'
                                             {...field}
-                                            ref={(e) => {
-                                                field.ref(e);
-                                                setTextArea(e);
-                                            }}
                                         />
                                     </FormControl>
                                     <FormMessage/>

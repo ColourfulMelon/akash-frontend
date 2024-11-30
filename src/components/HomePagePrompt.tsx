@@ -2,7 +2,6 @@
 import { TypeAnimation } from 'react-type-animation';
 import { atom } from 'jotai';
 import PromptInput from '@/components/PromptInput';
-import PromptSuggestion from '@/components/PromptSuggestion';
 import { useAtom } from 'jotai/index';
 import { PromptCreate } from '@/lib/zodSchemas';
 import { useRouter } from 'next/navigation';
@@ -24,7 +23,16 @@ export default function HomePagePrompt() {
     
     // Go to /playground when button is clicked and all fields are populated
     function goToPlayground(params: PromptCreate) {
-        router.push(`/playground?text=${params.text}&start=true`);
+        const data: Record<string, string> = {
+            text: params.text,
+            enhanceText: params.enhanceText ? 'true' : 'false',
+            start: 'true',
+        };
+        if (params.layoutOverride) data.layout = params.layoutOverride as string;
+        if (params.workflowOverride) data.workflow = params.workflowOverride as string;
+        if (params.seedOverride) data.seed = params.seedOverride.toString();
+        const urlSearchParams = new URLSearchParams(data);
+        router.push(`/playground?${urlSearchParams.toString()}`);
     }
     
     return (
@@ -43,13 +51,8 @@ export default function HomePagePrompt() {
                 />
             </div>
             
-            <PromptInput onSubmit={goToPlayground}/>
-            
-            <div className="flex gap-4 mt-2">
-                <PromptSuggestion prompt="A cat with wings"/>
-                <PromptSuggestion prompt="A robot in a forest"/>
-                <PromptSuggestion prompt="A city on the moon"/>
-            </div>
+            <PromptInput onSubmit={goToPlayground}
+                         suggestions={['A cat with wings', 'A robot in a forest', 'A horse in space']}/>
         
         </div>
     );
