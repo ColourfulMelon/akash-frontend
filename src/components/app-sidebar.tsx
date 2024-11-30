@@ -35,7 +35,26 @@ const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeo
                 e.stopPropagation();
                 router.push(targetPathname);
             }}
-        
+
+        >
+            {children}
+            {open && label}
+        </Button>
+    );
+};
+
+const SidebarNoNav = ({ children, label, ...props }: React.ComponentProps<typeof Button> & { label: string }) => {
+    const { open } = useSidebar();
+    const currentPathname = usePathname();
+    const targetPathname = `/${label}`.toLowerCase();
+    return (
+        <Button
+            variant="ghost"
+            className={cn(
+                'flex items-center justify-start p-2 gap-2',
+                currentPathname.toLowerCase() === targetPathname.toLowerCase() ? 'bg-accent' : '',
+            )}
+            {...props}
         >
             {children}
             {open && label}
@@ -46,7 +65,7 @@ const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeo
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { open, setOpen } = useSidebar();
     const router = useRouter();
-    
+
     return (
         <Sidebar collapsible="icon" {...props} onClick={(e) => {
             if (!open) {
@@ -68,7 +87,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarContent className="flex justify-between overflow-hidden">
                 <SidebarGroup className="pt-6">
                     <SidebarMenu className="gap-2">
-                        <SidebarButton label="Playground">
+                        <SidebarButton label="Playground" >
                             <Terminal className="!w-6 !h-6"/>
                         </SidebarButton>
                         <SidebarButton label={'History'}>
@@ -81,9 +100,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarGroup>
                 <SidebarGroup className="pt-6">
                     <SidebarMenu className="gap-2">
-                        <SidebarButton label={'Documentation'} className="justify-center">
+                        <SidebarNoNav label={'Documentation'} className="justify-center" onClick={()=> window.open("https://aisignal.gitbook.io/akash-alchemist/", "_blank")}>
                             <Book className="!w-6 !h-6"/>
-                        </SidebarButton>
+                        </SidebarNoNav>
                     </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent>

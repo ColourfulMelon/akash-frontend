@@ -14,7 +14,7 @@ export default function Footer({ className }: { className?: string }) {
             <div className="flex mx-auto gap-2">
                 <div className="flex">
                     <Github/>
-                    <a href="https://github.com/Dev3-Studio/akash-frontend" target="_blank" className="underline">
+                    <a href="https://github.com/Dev3-Studio/Akash-Alchemist" target="_blank" className="underline">
                         Source Code
                     </a>
                 </div>
