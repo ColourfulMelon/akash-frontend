@@ -6,7 +6,7 @@ import {statusAtom} from "@/components/HomePagePrompt";
 
 export default function PromptSuggestion({prompt}: {prompt: string}){
 
-    const [status, setStatus] = useAtom(statusAtom);
+    const [status] = useAtom(statusAtom);
 
     let textArea: HTMLTextAreaElement | null = null;
 

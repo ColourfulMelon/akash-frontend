@@ -6,7 +6,7 @@ import CenterLogo from "@/components/CenterLogo";
 import {useEffect, useRef, useState} from "react";
 
 export default function ImageContainer(){
-	const [status, setStatus] = useAtom(statusAtom);
+	const [status] = useAtom(statusAtom);
 	const logoRef = useRef<HTMLImageElement | null>(null);
 	const [logoGone, setLogoGone] = useState(false);
 

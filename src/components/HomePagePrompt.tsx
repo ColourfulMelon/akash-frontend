@@ -4,7 +4,6 @@ import { atom } from 'jotai';
 import PromptInput from '@/components/PromptInput';
 import PromptSuggestion from '@/components/PromptSuggestion';
 import { useAtom } from 'jotai/index';
-import { toast } from '@/components/ui/use-toast';
 import { PromptCreate } from '@/lib/zodSchemas';
 import { useRouter } from 'next/navigation';
 
@@ -20,7 +19,7 @@ interface TStatus {
 
 export const statusAtom = atom<TStatus>({ status: 'idle', id: null, prompt: '' });
 export default function HomePagePrompt() {
-    const [status, setStatus] = useAtom(statusAtom);
+    const [status] = useAtom(statusAtom);
     const router = useRouter();
     
     // Go to /playground when button is clicked and all fields are populated
