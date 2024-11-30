@@ -21,6 +21,18 @@ export default function Playground() {
     const clientId = useClientId();
     const [isCreatingPrompt, setIsCreatingPrompt] = useState(false);
     
+    const defaultPromptTextParse = z.string().optional().safeParse(params.get('text') ?? undefined);
+    const defaultLayoutOverrideParse = z.nativeEnum(Layout).optional().safeParse(params.get('layout') ?? undefined);
+    const defaultWorkflowOverrideParse = z.nativeEnum(Workflows).optional().safeParse(params.get('workflow') ?? undefined);
+    const defaultSeedOverrideParse = z.coerce.number().int().optional().safeParse(params.get('seed') ?? undefined);
+    
+    const defaultPromptText = defaultPromptTextParse.success ? defaultPromptTextParse.data : undefined;
+    const defaultLayoutOverride = defaultLayoutOverrideParse.success ? defaultLayoutOverrideParse.data : undefined;
+    const defaultWorkflowOverride = defaultWorkflowOverrideParse.success ? defaultWorkflowOverrideParse.data : undefined;
+    const defaultSeedOverride = defaultSeedOverrideParse.success ? defaultSeedOverrideParse.data : undefined;
+    
+    const start = params.get('start') === 'true';
+    
     const pendingPrompts = useQuery({
         queryKey: ['getAllPromptResults', clientId, PromptStatus.Pending],
         queryFn: async () => {
@@ -51,18 +63,6 @@ export default function Playground() {
         refetchInterval: 3000,
         enabled: clientId !== null,
     });
-    
-    const defaultPromptTextParse = z.string().optional().safeParse(params.get('prompt') ?? undefined);
-    const defaultLayoutOverrideParse = z.nativeEnum(Layout).optional().safeParse(params.get('layout') ?? undefined);
-    const defaultWorkflowOverrideParse = z.nativeEnum(Workflows).optional().safeParse(params.get('workflow') ?? undefined);
-    const defaultSeedOverrideParse = z.coerce.number().int().optional().safeParse(params.get('seed') ?? undefined);
-    
-    const defaultPromptText = defaultPromptTextParse.success ? defaultPromptTextParse.data : undefined;
-    const defaultLayoutOverride = defaultLayoutOverrideParse.success ? defaultLayoutOverrideParse.data : undefined;
-    const defaultWorkflowOverride = defaultWorkflowOverrideParse.success ? defaultWorkflowOverrideParse.data : undefined;
-    const defaultSeedOverride = defaultSeedOverrideParse.success ? defaultSeedOverrideParse.data : undefined;
-    
-    const start = params.get('start') === 'true';
     
     const createPromptMutation = useMutation({
         mutationFn: (prompt: PromptCreate) => {
@@ -113,16 +113,16 @@ export default function Playground() {
     }
     
     useEffect(() => {
-        if (start && clientId) {
+        if (start && clientId && defaultPromptText) {
             void handleCreatePrompt({
                 clientId: clientId,
-                text: defaultPromptText ?? 'Generate an image',
+                text: defaultPromptText,
                 layoutOverride: defaultLayoutOverride,
                 workflowOverride: defaultWorkflowOverride,
                 seedOverride: defaultSeedOverride,
             });
         }
-    }, []);
+    }, [start, clientId]);
     
     return (
         <div className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)]">
