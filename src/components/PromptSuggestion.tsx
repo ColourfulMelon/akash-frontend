@@ -2,7 +2,7 @@
 import {ArrowUpRight} from "lucide-react";
 import {useEffect} from "react";
 import {useAtom} from "jotai/index";
-import {statusAtom} from "@/components/Prompt";
+import {statusAtom} from "@/components/HomePagePrompt";
 
 export default function PromptSuggestion({prompt}: {prompt: string}){
 

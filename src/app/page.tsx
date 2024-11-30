@@ -1,4 +1,4 @@
-import Prompt from '@/components/Prompt';
+import HomePagePrompt from '@/components/HomePagePrompt';
 import Image from 'next/image';
 import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 
@@ -13,7 +13,7 @@ export default function Home() {
             <section className="flex flex-col justify-center align-middle h-full">
                 
                 <Image className='mx-auto mb-12' src={'/images/akash-powered.svg'} alt="akash" width={134} height={52}/>
-                <Prompt/>
+                <HomePagePrompt/>
             
             </section>
         </div>

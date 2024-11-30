@@ -1,6 +1,6 @@
 'use client';
 import IconPlayer from "@/components/IconPlayer";
-import {statusAtom} from "@/components/Prompt";
+import {statusAtom} from "@/components/HomePagePrompt";
 import {useAtom} from "jotai/index";
 import CenterLogo from "@/components/CenterLogo";
 import {useEffect, useRef, useState} from "react";

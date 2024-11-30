@@ -2,7 +2,7 @@
 import { Player } from '@lordicon/react';
 import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { statusAtom } from '@/components/Prompt';
+import { statusAtom } from '@/components/HomePagePrompt';
 import { useAtomValue } from 'jotai/index';
 import animatedIcon from '@/components/assets/animated_icon.json';
 
