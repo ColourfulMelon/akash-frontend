@@ -21,7 +21,7 @@ export function PromptSettingsCard({ prompt }: { prompt: Prompt }) {
                         value={prompt.enhancedText ?? ''}
                     />
                 </div>
-                <div className="flex flex-wrap w-full justify-evenly items-center mt-4">
+                <div className="flex flex-wrap gap-2 w-full justify-evenly items-center mt-4">
                     <Badge className="space-x-1">
                         <p className="font-black">Workflow:</p>
                         <p>{
