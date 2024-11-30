@@ -37,6 +37,15 @@ export const zPromptCreate = z.object({
     seedOverride: z.number().int().optional(),
 });
 
+export const zPromptCreateForm = z.object({
+    text: z.string(),
+    enhanceText: z.boolean().optional(),
+    // Workaround for parsing issue when user deselects from toggle group
+    layoutOverride: z.nativeEnum(Layout).or(z.literal('')).optional(),
+    workflowOverride: z.nativeEnum(Workflows).optional(),
+    seedOverride: z.coerce.number().int().optional(),
+});
+
 export const zPromptResult = z.object({
     clientId: z.string().uuid(),
     promptId: z.string().uuid(),
@@ -53,4 +62,5 @@ export const zPromptResult = z.object({
 
 export type Prompt = z.infer<typeof zPrompt>;
 export type PromptCreate = z.infer<typeof zPromptCreate>;
+export type PromptCreateForm = z.infer<typeof zPromptCreateForm>;
 export type PromptResult = z.infer<typeof zPromptResult>;

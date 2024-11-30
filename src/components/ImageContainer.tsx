@@ -1,12 +1,12 @@
 'use client';
 import IconPlayer from "@/components/IconPlayer";
-import {statusAtom} from "@/components/Prompt";
+import {statusAtom} from "@/components/HomePagePrompt";
 import {useAtom} from "jotai/index";
 import CenterLogo from "@/components/CenterLogo";
 import {useEffect, useRef, useState} from "react";
 
 export default function ImageContainer(){
-	const [status, setStatus] = useAtom(statusAtom);
+	const [status] = useAtom(statusAtom);
 	const logoRef = useRef<HTMLImageElement | null>(null);
 	const [logoGone, setLogoGone] = useState(false);
 

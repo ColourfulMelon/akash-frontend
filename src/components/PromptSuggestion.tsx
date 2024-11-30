@@ -1,9 +1,8 @@
 'use client';
 import {ArrowUpRight} from "lucide-react";
-import {ReactDOM, useEffect} from "react";
-import {useAtom, useAtomValue} from "jotai/index";
-import {statusAtom} from "@/components/Prompt";
-import {TARef} from "@/components/PromptCreateCard";
+import {useEffect} from "react";
+import {useAtom} from "jotai/index";
+import {statusAtom} from "@/components/HomePagePrompt";
 
 export default function PromptSuggestion({prompt}: {prompt: string}){
 
