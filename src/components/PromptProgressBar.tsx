@@ -4,8 +4,8 @@ export function PromptProgressBar({ progress, message }: { progress: number, mes
     const percent = Math.floor(progress * 100);
     return (
         <div className="flex flex-col gap-2 w-full">
-            <Progress value={progress}/>
-            <div className="text-sm">{message} ({progress}%)</div>
+            <Progress value={percent}/>
+            <div className="text-sm">{message} ({percent}%)</div>
         </div>
     );
 }
