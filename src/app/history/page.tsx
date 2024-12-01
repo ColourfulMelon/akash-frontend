@@ -1,5 +1,4 @@
 'use client';
-import { Clock } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import { useClientId } from '@/hooks/use-client-id';
@@ -7,8 +6,6 @@ import PromptImage from '@/components/PromptImage';
 import useMasonry from '@/components/hooks/useMasonry';
 import LoadingComponent from '@/components/LoadingComponent';
 import { PromptStatus } from '@/lib/zodSchemas';
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default function History() {
     const clientId = useClientId();

@@ -1,8 +1,6 @@
 import HomePagePrompt from '@/components/HomePagePrompt';
 import Image from 'next/image';
-import Header from "@/components/Header";
 import React from "react";
-import Footer from "@/components/Footer";
 
 export default function Home() {
     return (

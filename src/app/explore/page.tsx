@@ -1,5 +1,4 @@
 'use client';
-import {Clock} from 'lucide-react';
 import {useQuery} from '@tanstack/react-query';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import PromptImage from '@/components/PromptImage';

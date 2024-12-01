@@ -10,13 +10,11 @@ import { toast } from '@/components/ui/use-toast';
 import { useEffect, useState } from 'react';
 import getAllPromptResults from '@/actions/getAllPromptResults';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PromptHistorySheet } from '@/components/PromptHistorySheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Check } from 'lucide-react';
 import { Spinner } from '@/components/ui/Spinner';
 import PromptImage from '@/components/PromptImage';
 import { PromptProgressBar } from '@/components/PromptProgressBar';
-import Header from "@/components/Header";
 
 export default function Playground() {
     const params = useSearchParams();
