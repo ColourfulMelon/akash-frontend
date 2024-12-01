@@ -163,8 +163,8 @@ export default function Playground() {
                     </Card>
                 </div>
             </div>
-            <div className="flex w-full h-full p-8">
-                <div className="m-auto w-screen-sm">
+            <div className="flex w-full p-2 lg:p-8">
+                <div className="m-auto">
                     {/*todo: Figure out how to size this responsively*/}
                     {lastPrompt.data && <PromptImage promptResult={lastPrompt.data}/>}
                 </div>

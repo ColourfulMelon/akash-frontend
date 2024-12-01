@@ -18,12 +18,12 @@ export default function Header({ disableTitle }: { disableTitle?: boolean }) {
     return (
         <header className="flex justify-between items-center w-full py-4 px-4 md:px-8">
             <div className={cn(
-                'hidden lg:block text-4xl',
+                'hidden md:block text-4xl',
                 disableTitle ? 'hidden' : '',
             )}>
                 {pathname.charAt(1).toUpperCase() + pathname.slice(2)}
             </div>
-            <Menu className="cursor-pointer lg:invisible" onClick={openSidebar}/>
+            <Menu className="cursor-pointer md:invisible" onClick={openSidebar}/>
             <PromptHistorySheet/>
         </header>);
 }
