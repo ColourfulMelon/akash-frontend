@@ -245,12 +245,12 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
                     </form>
                 </Form>
             </div>
-            { suggestions && <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2 w-full">
+            {suggestions && <div className="flex flex-wrap gap-2 lg:gap-4 items-center justify-center">
                 {suggestions.map((suggestion, index) =>
                     <Badge
                         key={index}
                         onClick={() => form.setValue('text', suggestion)}
-                        className="cursor-pointer text-sm bg-secondary text-center h-10 sm:h-8 flex justify-center"
+                        className="cursor-pointer text-sm bg-secondary text-center flex justify-center p-1 px-2"
                     >
                         {suggestion}
                         <ArrowUpRight className="w-4 h-4"/>
