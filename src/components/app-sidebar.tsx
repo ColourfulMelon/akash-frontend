@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Aperture, Book, History, Terminal, X } from 'lucide-react';
+import {Book, Images, Telescope, Terminal, X} from 'lucide-react';
 import {
     Sidebar,
     SidebarContent,
@@ -38,7 +38,7 @@ const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeo
                 e.stopPropagation();
                 router.push(targetPathname);
             }}
-        
+
         >
             {children}
             {open && label}
@@ -68,7 +68,7 @@ const SidebarLink = ({ children, label, href, ...props }: React.ComponentProps<t
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { open, setOpen, setOpenMobile } = useSidebar();
     const router = useRouter();
-    
+
     return (
         <Sidebar collapsible="icon" {...props} onClick={(e) => {
             if (!open) {
@@ -97,10 +97,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             <Terminal className="!w-6 !h-6"/>
                         </SidebarButton>
                         <SidebarButton label={'Gallery'}>
-                            <History className="!w-6 !h-6"/>
+                            <Images className="!w-6 !h-6"/>
                         </SidebarButton>
                         <SidebarButton label={'Explore'}>
-                            <Aperture className="!w-6 !h-6"/>
+                            <Telescope className="!w-6 !h-6"/>
                         </SidebarButton>
                     </SidebarMenu>
                 </SidebarGroup>

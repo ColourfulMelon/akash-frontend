@@ -259,6 +259,7 @@
     height: 40px;
     background: linear-gradient(to bottom, rgba(251, 251, 251, 0) 0%, #191516 100%);
     position: relative;
+    user-select: none;
 }
 
 .fadedScrollTop {
@@ -268,4 +269,5 @@
     background: linear-gradient(to top, rgba(251, 251, 251, 0) 0%, #191516 100%);
     position: relative;
     z-index: 1;
+    user-select: none;
 }
