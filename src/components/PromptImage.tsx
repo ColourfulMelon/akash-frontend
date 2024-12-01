@@ -6,6 +6,8 @@ import { PromptSettingsCard } from '@/components/PromptSettingsCard';
 import { PromptProgressBar } from '@/components/PromptProgressBar';
 import { toast } from '@/components/ui/use-toast';
 import FileSaver from 'file-saver';
+import { PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const convertFilenameToUrl = (filename: string) => {
     return `${process.env.NEXT_PUBLIC_IMAGE_CDN}/akash-alchemist/${filename}`;
@@ -60,13 +62,15 @@ function PromptCompletedImage({
     
     return (
         <div className="relative">
-            <Image
-                className="rounded-md"
-                src={imgURL}
-                alt={alt}
-                width={DIMENSIONS[layout].width}
-                height={DIMENSIONS[layout].height}
-            />
+            <PhotoView src={imgURL}>
+                <Image
+                    className="rounded-md w-[640px] h-auto object-contain cursor-pointer"
+                    src={imgURL}
+                    alt={alt}
+                    width={DIMENSIONS[layout].width}
+                    height={DIMENSIONS[layout].height}
+                />
+            </PhotoView>
             <div className="absolute bottom-0 right-0 p-4">
                 <div className="flex gap-2">
                     <Popover>
