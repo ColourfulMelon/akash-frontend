@@ -1,15 +1,13 @@
 import HomePagePrompt from '@/components/HomePagePrompt';
 import Image from 'next/image';
-import React from "react";
+import React from 'react';
 
 export default function Home() {
     return (
-        <div className='h-full'>
-
-            <section className="flex flex-col justify-center mt-16">
-                <Image className='mx-auto mb-5 md:mb-12' src={'/images/akash-powered.svg'} alt="akash" width={134} height={52}/>
-                <HomePagePrompt/>
-            </section>
-        </div>
+        <section className="my-auto">
+            <Image className="mx-auto mb-5 md:mb-12" src={'/images/akash-powered.svg'} alt="akash" width={134}
+                   height={52}/>
+            <HomePagePrompt/>
+        </section>
     );
 }
