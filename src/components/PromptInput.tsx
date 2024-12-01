@@ -38,14 +38,14 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
 }>) {
     const clientId = useClientId();
     const [workflowOpen, setWorkflowOpen] = useState(false);
-    
+
     const form = useForm<PromptCreateForm>({
         defaultValues: {
             enhanceText: true,
         },
         resolver: zodResolver(zPromptCreateForm),
     });
-    
+
     function handleSubmit(data: PromptCreateForm) {
         if (!clientId) {
             toast({
@@ -62,7 +62,7 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
             layoutOverride: data.layoutOverride === '' ? undefined : data.layoutOverride,
         });
     }
-    
+
     return (
         <div className="flex flex-col flex-wrap items-center w-full max-w-[50rem] gap-2">
             <div
@@ -86,7 +86,7 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
                                 </FormItem>
                             )}
                         />
-                        
+
                         <div className="flex justify-between w-full">
                             <Popover>
                                 <PopoverTrigger className="border bg-background p-1 rounded-sm">
@@ -140,7 +140,7 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
                                             </FormItem>
                                         )}
                                     />
-                                    
+
                                     <FormField
                                         control={form.control}
                                         name="workflowOverride"
@@ -245,12 +245,12 @@ export default function PromptInput({ onSubmit, suggestions }: Readonly<{
                     </form>
                 </Form>
             </div>
-            { suggestions && <div className="flex gap-4 mt-2">
+            { suggestions && <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2 w-full">
                 {suggestions.map((suggestion, index) =>
                     <Badge
                         key={index}
                         onClick={() => form.setValue('text', suggestion)}
-                        className="cursor-pointer text-sm bg-secondary"
+                        className="cursor-pointer text-sm bg-secondary text-center h-10 sm:h-8 flex justify-center"
                     >
                         {suggestion}
                         <ArrowUpRight className="w-4 h-4"/>

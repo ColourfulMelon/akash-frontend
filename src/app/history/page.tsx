@@ -7,6 +7,8 @@ import PromptImage from '@/components/PromptImage';
 import useMasonry from '@/components/hooks/useMasonry';
 import LoadingComponent from '@/components/LoadingComponent';
 import { PromptStatus } from '@/lib/zodSchemas';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function History() {
     const clientId = useClientId();
@@ -26,10 +28,6 @@ export default function History() {
 
     return (
         <div className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)]">
-            <div className="flex justify-between items-center w-full py-4 px-8">
-                <div className="text-4xl">History</div>
-                <Clock/>
-            </div>
             <div>
                 <div className="fadedScrollTop"></div>
                 <div

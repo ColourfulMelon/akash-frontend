@@ -18,9 +18,8 @@ interface TStatus {
 
 export const statusAtom = atom<TStatus>({ status: 'idle', id: null, prompt: '' });
 export default function HomePagePrompt() {
-    const [status] = useAtom(statusAtom);
     const router = useRouter();
-    
+
     // Go to /playground when button is clicked and all fields are populated
     function goToPlayground(params: PromptCreate) {
         const data: Record<string, string> = {
@@ -34,13 +33,12 @@ export default function HomePagePrompt() {
         const urlSearchParams = new URLSearchParams(data);
         router.push(`/playground?${urlSearchParams.toString()}`);
     }
-    
+
     return (
-        <div className={`flex flex-col items-center justify-center ${status.status === 'generating' ? '' : ''}`}>
-            
-            <div className={`${status.status !== 'idle' ? 'animate-fadeOut' : ''}`}>
+        <div className={`flex flex-col items-center justify-center px-5 lg:px-10`}>
+
                 <TypeAnimation
-                    className={`mb-2`}
+                    className={`mb-2 text-center`}
                     sequence={[
                         'What are we creating today?',
                     ]}
@@ -49,11 +47,10 @@ export default function HomePagePrompt() {
                     style={{ fontSize: '1.75rem', fontWeight: 'bold', display: 'inline-block' }}
                     repeat={1}
                 />
-            </div>
-            
+
             <PromptInput onSubmit={goToPlayground}
                          suggestions={['A cat with wings', 'A robot in a forest', 'A horse in space']}/>
-        
+
         </div>
     );
 }
