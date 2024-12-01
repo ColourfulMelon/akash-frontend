@@ -8,6 +8,7 @@ import { useClientId } from '@/hooks/use-client-id';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useState } from 'react';
 import PromptImage from '@/components/PromptImage';
+import Link from "next/link";
 
 export function PromptHistorySheet() {
     const clientId = useClientId();
@@ -27,8 +28,8 @@ export function PromptHistorySheet() {
         refetchInterval: 3000,
         enabled: clientId !== null,
     });
-    
-    
+
+
     return (
         <Sheet>
             <SheetTrigger>
@@ -38,7 +39,7 @@ export function PromptHistorySheet() {
                 <SheetHeader>
                     <SheetTitle className="flex flex-row gap-2 items-center">
                         Recent Images
-                        <ArrowUpRight className="w-4 h-4 cursor-pointer"/>
+                        <Link href="/gallery"><ArrowUpRight className="w-4 h-4 cursor-pointer"/></Link>
                     </SheetTitle>
                     <SheetDescription>
                         These are your most recent creations!
