@@ -5,12 +5,12 @@ import {Button} from "@/components/ui/button";
 import {Menu} from "lucide-react";
 
 export default function Header(){
-	const { setOpenMobile } = useSidebar();
+	const { toggleSidebar } = useSidebar();
 
 	return (
-		<header className='flex justify-between items-center w-full py-4 px-4 md:px-8 md:justify-end'>
+		<header className='flex justify-between items-center w-full py-4 px-4 md:px-8'>
 			{/*mobile sidebar toggle*/}
-			<Button className="block md:hidden" onClick={()=>setOpenMobile(true)}><Menu /></Button>
+			<Button className="" onClick={toggleSidebar}><Menu /></Button>
 
 			<PromptHistorySheet/>
 		</header>)
