@@ -96,7 +96,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <SidebarButton label="Playground">
                             <Terminal className="!w-6 !h-6"/>
                         </SidebarButton>
-                        <SidebarButton label={'History'}>
+                        <SidebarButton label={'Gallery'}>
                             <History className="!w-6 !h-6"/>
                         </SidebarButton>
                         <SidebarButton label={'Explore'}>
