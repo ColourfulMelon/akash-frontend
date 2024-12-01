@@ -44,6 +44,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.2",
+    "react-photo-view": "^1.2.6",
+    "react-plock": "^3.2.0",
     "react-type-animation": "^3.2.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",
