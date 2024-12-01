@@ -59,34 +59,32 @@ function PromptCompletedImage({
     }
     
     return (
-        <div>
-            <div className="relative">
-                <Image
-                    className="rounded-md"
-                    src={imgURL}
-                    alt={alt}
-                    width={DIMENSIONS[layout].width}
-                    height={DIMENSIONS[layout].height}
-                />
-                <div className="absolute bottom-0 right-0 p-4">
-                    <div className="flex gap-2">
-                        <Popover>
-                            <PopoverTrigger>
-                                <Info className="w-6 h-6 "/>
-                            </PopoverTrigger>
-                            <PopoverContent className="lg:w-96">
-                                <PromptSettingsCard
-                                    text={text}
-                                    workflow={workflow}
-                                    layout={layout}
-                                    seed={seed}
-                                    enhancedText={enhancedText}
-                                />
-                            </PopoverContent>
-                        </Popover>
-                        <Copy className="w-6 h-6 cursor-pointer" onClick={() => copyImg(imgURL)}/>
-                        <Download className="w-6 h-6 cursor-pointer" onClick={() => downloadImg(imgURL)}/>
-                    </div>
+        <div className="relative">
+            <Image
+                className="rounded-md"
+                src={imgURL}
+                alt={alt}
+                width={DIMENSIONS[layout].width}
+                height={DIMENSIONS[layout].height}
+            />
+            <div className="absolute bottom-0 right-0 p-4">
+                <div className="flex gap-2">
+                    <Popover>
+                        <PopoverTrigger>
+                            <Info className="w-6 h-6 "/>
+                        </PopoverTrigger>
+                        <PopoverContent className="lg:w-96">
+                            <PromptSettingsCard
+                                text={text}
+                                workflow={workflow}
+                                layout={layout}
+                                seed={seed}
+                                enhancedText={enhancedText}
+                            />
+                        </PopoverContent>
+                    </Popover>
+                    <Copy className="w-6 h-6 cursor-pointer" onClick={() => copyImg(imgURL)}/>
+                    <Download className="w-6 h-6 cursor-pointer" onClick={() => downloadImg(imgURL)}/>
                 </div>
             </div>
         </div>
@@ -98,8 +96,9 @@ function PromptPendingImage({ promptResult }: { promptResult: PromptResult }) {
         <div className="flex">
             <div className="relative">
                 <div>
-                    <div className="relative w-[640px] h-[640px] top-0 left-0 max-w-screen-sm bg-secondary overflow-hidden
-                        before:absolute before:w-[1280px] before:h-[1280px]
+                    <div className="relative  top-0 left-0 bg-secondary overflow-hidden
+                        w-[320px] h-[320px] md:w-[640px] md:h-[640px]
+                        before:absolute before:w-[200%] before:h-[200%]
                         before:bg-[radial-gradient(hsl(var(--primary)),transparent,transparent)]
                         before:animate-[loader-border_1.5s_linear_infinite]
                         after:absolute after:inset-[2px] after:bg-secondary"
@@ -112,7 +111,7 @@ function PromptPendingImage({ promptResult }: { promptResult: PromptResult }) {
                                            message={promptResult.statusMessage ?? 'In queue'}/>
                     </div>
                 </div>
-                
+            
             </div>
         </div>
     );
