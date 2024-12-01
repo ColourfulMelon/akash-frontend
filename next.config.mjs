@@ -10,7 +10,7 @@ const nextConfig = {
 			},
 			{
 				protocol: 'https',
-				hostname: 'placehold.co',
+				hostname: 'akash-alchemist.dev3.studio',
 			}
 		]
 	}

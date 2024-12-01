@@ -10,7 +10,7 @@ interface GetAllPromptResultsOptions {
 }
 
 export default async function getAllPromptResults(options?: GetAllPromptResultsOptions): Promise<PromptResult[]> {
-    const url = getRequiredEnvVar('NEXT_PUBLIC_API_ENDPOINT');
+    const url = getRequiredEnvVar('API_ENDPOINT');
     let endpoint = `${url}/prompts/results`;
     if (options?.clientId) {
         endpoint += `?clientId=${options.clientId}`;
