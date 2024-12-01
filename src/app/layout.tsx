@@ -24,14 +24,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                             className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)_minmax(0,max-content)] w-full h-full">
                             <Header/>
                             <Suspense>
-                                {children}
+                                <div className="flex p-8 w-full h-full">
+                                    {children}
+                                </div>
                             </Suspense>
                             <Footer/>
                         </div>
                     
                     </main>
                     <Toaster/>
-
+                
                 </ContextProvider>
             </body>
         </html>

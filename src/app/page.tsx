@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Home() {
     return (
-        <section className="my-auto">
+        <section className="m-auto w-full">
             <Image className="mx-auto mb-5 md:mb-12" src={'/images/akash-powered.svg'} alt="akash" width={134}
                    height={52}/>
             <HomePagePrompt/>
