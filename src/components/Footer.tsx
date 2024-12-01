@@ -11,7 +11,7 @@ export default function Footer({ className }: { className?: string }) {
             {/*    <Image src='/images/akash-powered.svg' alt="akash" width={134} height={52}/>*/}
             {/*</div>*/}
 
-            <div className="flex mx-auto gap-2">
+            <div className="flex mx-auto gap-2 text-sm sm:text-base">
                 <div className="flex">
                     <Github/>
                     <a href="https://github.com/Dev3-Studio/Akash-Alchemist" target="_blank" className="underline">
