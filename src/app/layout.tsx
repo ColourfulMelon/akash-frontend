@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import React, { Suspense } from 'react';
 import { ContextProvider } from '@/app/context';
 import Footer from '@/components/Footer';
-import Header from "@/components/Header";
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
     title: 'Akash Alchemist',
@@ -19,14 +19,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 className="font-SFPro bg-radial-gradient from-bg-gradient-start from-0% to-bg-gradient-end to-100% w-full overflow-hidden">
                 <ContextProvider>
                     <main className="w-full min-h-dvh">
-                        <Header/>
-
-                        <div className="grid grid-rows-[minmax(0,1fr)_minmax(0,max-content)] w-full h-full">
+                        
+                        <div
+                            className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)_minmax(0,max-content)] w-full h-full">
+                            <Header/>
                             <Suspense>
                                 {children}
                             </Suspense>
+                            <Footer/>
                         </div>
-                        <Footer/>
+                    
                     </main>
                     <Toaster/>
 
