@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Aperture, Book, History, Terminal } from 'lucide-react';
+import {Aperture, Book, History, Terminal, X} from 'lucide-react';
 import {
     Sidebar,
     SidebarContent,
@@ -63,7 +63,7 @@ const SidebarNoNav = ({ children, label, ...props }: React.ComponentProps<typeof
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const { open, setOpen } = useSidebar();
+    const { open, setOpen, setOpenMobile } = useSidebar();
     const router = useRouter();
 
     return (
@@ -73,6 +73,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             }
         }}>
             <SidebarHeader>
+                <div className="flex justify-end">
+                    <X onClick={()=>setOpenMobile(false)} className="block md:hidden"/>
+                </div>
                 <SidebarMenu>
                     <SidebarMenuItem onClick={() => router.push('/')}>
                         <div className={cn(
@@ -100,7 +103,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarGroup>
                 <SidebarGroup className="pt-6">
                     <SidebarMenu className="gap-2">
-                        <SidebarNoNav label={'Documentation'} className="justify-center" onClick={()=> window.open("https://aisignal.gitbook.io/akash-alchemist/", "_blank")}>
+                        <SidebarNoNav label={'Documentation'} className="justify-center" onClick={()=> window.open("https://dev3-studio.gitbook.io/akash-alchemist/", "_blank")}>
                             <Book className="!w-6 !h-6"/>
                         </SidebarNoNav>
                     </SidebarMenu>

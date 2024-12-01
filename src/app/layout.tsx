@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en" suppressHydrationWarning={true} className="">
             <body
-                className="font-SFPro bg-radial-gradient from-bg-gradient-start from-0% to-bg-gradient-end to-100% w-full">
+                className="font-SFPro bg-radial-gradient from-bg-gradient-start from-0% to-bg-gradient-end to-100% w-full overflow-x-hidden">
                 <ContextProvider>
                     <main className="w-full min-h-dvh">
                         <Header/>

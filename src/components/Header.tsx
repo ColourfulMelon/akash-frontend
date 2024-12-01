@@ -8,7 +8,7 @@ export default function Header(){
 	const { setOpenMobile } = useSidebar();
 
 	return (
-		<header className='flex justify-between items-center w-full py-4 px-8 md:justify-end'>
+		<header className='flex justify-between items-center w-full py-4 px-4 md:px-8 md:justify-end'>
 			{/*mobile sidebar toggle*/}
 			<Button className="block md:hidden" onClick={()=>setOpenMobile(true)}><Menu /></Button>
 
