@@ -26,7 +26,7 @@ export function PromptSettingsCard({
                         readOnly={true}
                     />
                 </div>
-                feat: {enhancedText && <div>
+                {enhancedText && <div>
                     <div className="font-bold text-lg">Enhanced Prompt</div>
                     <AutosizeTextarea
                         className="resize-none rounded-md outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
