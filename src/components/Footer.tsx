@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 export default function Footer({ className }: { className?: string }) {
     return (
-        <section className={cn("flex flex-col align-middle text-white w-full p-4 text-center", className)}>
+        <section className={cn("flex flex-col align-middle text-white w-full p-4 text-center absolute bottom-5", className)}>
 
             {/*<div className='flex justify-center mb-4'>*/}
             {/*    <Image src='/images/akash-powered.svg' alt="akash" width={134} height={52}/>*/}

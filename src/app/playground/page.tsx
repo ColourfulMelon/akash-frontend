@@ -16,13 +16,14 @@ import { Check } from 'lucide-react';
 import { Spinner } from '@/components/ui/Spinner';
 import PromptImage from '@/components/PromptImage';
 import { PromptProgressBar } from '@/components/PromptProgressBar';
+import Header from "@/components/Header";
 
 export default function Playground() {
     const params = useSearchParams();
     const router = useRouter();
     const clientId = useClientId();
     const [isCreatingPrompt, setIsCreatingPrompt] = useState(false);
-    
+
     const pendingPrompts = useQuery({
         queryKey: ['getAllPromptResults', clientId, PromptStatus.Pending],
         queryFn: async () => {
@@ -35,7 +36,7 @@ export default function Playground() {
         refetchInterval: 3000,
         enabled: clientId !== null,
     });
-    
+
     const lastPrompt = useQuery({
         queryKey: ['getAllPromptResults', clientId, 1],
         queryFn: async () => {
@@ -52,7 +53,7 @@ export default function Playground() {
         refetchInterval: 1000,
         enabled: clientId !== null,
     });
-    
+
     const createPromptMutation = useMutation({
         mutationFn: async (prompt: PromptCreate) => {
             if (prompt.enhanceText || (!prompt.layoutOverride && !prompt.workflowOverride && !prompt.seedOverride)) {
@@ -92,12 +93,12 @@ export default function Playground() {
             if (params.get('start') === 'true') router.replace('/playground');
         },
     });
-    
+
     const handleCreatePrompt = async (prompt: PromptCreate) => {
         setIsCreatingPrompt(true);
         await createPromptMutation.mutateAsync(prompt);
     };
-    
+
     useEffect(() => {
         const paramsSchema = z.object({
             clientId: z.string().uuid(),
@@ -123,17 +124,13 @@ export default function Playground() {
             return;
         }
         const data = parsed.data;
-        
+
         if (data.start) createPromptMutation.mutate(parsed.data);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [clientId]);
-    
+
     return (
         <div className="grid grid-rows-[minmax(0,max-content)_minmax(0,1fr)]">
-            <div className="flex justify-between items-center w-full py-4 px-8">
-                <div className="text-4xl">Playground</div>
-                <PromptHistorySheet/>
-            </div>
             <div className="flex px-8 pt-4 pb-2">
                 <div className="flex flex-col h-full gap-8 w-80 min-h-full">
                     <div className="flex flex-shrink">
