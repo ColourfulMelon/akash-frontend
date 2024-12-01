@@ -5,7 +5,6 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { PromptSettingsCard } from '@/components/PromptSettingsCard';
 import { PromptProgressBar } from '@/components/PromptProgressBar';
 import { toast } from '@/components/ui/use-toast';
-import FileSaver from 'file-saver';
 import { PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
@@ -56,8 +55,8 @@ function PromptCompletedImage({
         }
     }
     
-    async function downloadImg(src: string) {
-        FileSaver.saveAs(src, 'prompt.png');
+    function downloadImg(url: string) {
+        window.location.href = url;
     }
     
     return (
