@@ -8,7 +8,7 @@ import { toast } from '@/components/ui/use-toast';
 import FileSaver from 'file-saver';
 
 const convertFilenameToUrl = (filename: string) => {
-    return `${process.env.NEXT_PUBLIC_API_ENDPOINT}/outputs/${filename}`;
+    return `${process.env.NEXT_PUBLIC_IMAGE_CDN}/akash-alchemist/${filename}`;
 };
 
 function PromptCompletedImage({
