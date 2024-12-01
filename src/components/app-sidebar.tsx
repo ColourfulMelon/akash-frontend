@@ -1,12 +1,15 @@
 'use client';
 
 import * as React from 'react';
-import {Aperture, Book, History, Terminal, X} from 'lucide-react';
+import { Aperture, Book, History, Terminal, X } from 'lucide-react';
 import {
     Sidebar,
     SidebarContent,
-    SidebarFooter, SidebarGroup,
-    SidebarHeader, SidebarMenu, SidebarMenuItem,
+    SidebarFooter,
+    SidebarGroup,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuItem,
     SidebarRail,
     useSidebar,
 } from '@/components/ui/sidebar';
@@ -35,7 +38,7 @@ const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeo
                 e.stopPropagation();
                 router.push(targetPathname);
             }}
-
+        
         >
             {children}
             {open && label}
@@ -43,29 +46,29 @@ const SidebarButton = ({ children, label, ...props }: React.ComponentProps<typeo
     );
 };
 
-const SidebarNoNav = ({ children, label, ...props }: React.ComponentProps<typeof Button> & { label: string }) => {
+const SidebarLink = ({ children, label, href, ...props }: React.ComponentProps<typeof Button> & {
+    label: string,
+    href: string
+}) => {
     const { open } = useSidebar();
-    const currentPathname = usePathname();
-    const targetPathname = `/${label}`.toLowerCase();
     return (
-        <Button
-            variant="ghost"
-            className={cn(
-                'flex items-center justify-start p-2 gap-2',
-                currentPathname.toLowerCase() === targetPathname.toLowerCase() ? 'bg-accent' : '',
-            )}
-            {...props}
-        >
-            {children}
-            {open && label}
-        </Button>
+        <Link href={href} target="_blank">
+            <Button
+                variant="ghost"
+                {...props}
+                className="flex justify-center w-full p-2 "
+            >
+                {children}
+                {open && label}
+            </Button>
+        </Link>
     );
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { open, setOpen, setOpenMobile } = useSidebar();
     const router = useRouter();
-
+    
     return (
         <Sidebar collapsible="icon" {...props} onClick={(e) => {
             if (!open) {
@@ -74,7 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         }}>
             <SidebarHeader>
                 <div className="flex justify-end">
-                    <X onClick={()=>setOpenMobile(false)} className="block md:hidden"/>
+                    <X onClick={() => setOpenMobile(false)} className="block md:hidden"/>
                 </div>
                 <SidebarMenu>
                     <SidebarMenuItem onClick={() => router.push('/')}>
@@ -90,7 +93,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarContent className="flex justify-between overflow-hidden">
                 <SidebarGroup className="pt-6">
                     <SidebarMenu className="gap-2">
-                        <SidebarButton label="Playground" >
+                        <SidebarButton label="Playground">
                             <Terminal className="!w-6 !h-6"/>
                         </SidebarButton>
                         <SidebarButton label={'History'}>
@@ -103,9 +106,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarGroup>
                 <SidebarGroup className="pt-6">
                     <SidebarMenu className="gap-2">
-                        <SidebarNoNav label={'Documentation'} className="justify-center" onClick={()=> window.open("https://dev3-studio.gitbook.io/akash-alchemist/", "_blank")}>
+                        <SidebarLink label={'Documentation'} href="https://aisignal.gitbook.io/akash-alchemist/">
                             <Book className="!w-6 !h-6"/>
-                        </SidebarNoNav>
+                        </SidebarLink>
                     </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent>
@@ -117,9 +120,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <Image src={'/images/akash-powered.svg'} alt="akash" width={134} height={52}/>}
                 </Link>
             </SidebarFooter>
-            <div onClick={() => setOpen(!open)}>
-                <SidebarRail/>
-            </div>
+            <SidebarRail/>
         </Sidebar>
     );
 }
