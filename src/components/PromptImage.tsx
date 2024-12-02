@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import { Layout, PromptResult } from '@/lib/zodSchemas';
-import { Copy, Download, ImageIcon, Info } from 'lucide-react';
+import { Download, ImageIcon, Info } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { PromptSettingsCard } from '@/components/PromptSettingsCard';
 import { PromptProgressBar } from '@/components/PromptProgressBar';
-import { toast } from '@/components/ui/use-toast';
 import { PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
@@ -37,24 +36,6 @@ function PromptCompletedImage({
         square: { width: 1024, height: 1024 },
     };
     
-    async function copyImg(src: string) {
-        const img = await fetch(src);
-        const imgBlob = await img.blob();
-        try {
-            await navigator.clipboard.write([
-                new ClipboardItem({
-                    [imgBlob.type]: imgBlob,
-                }),
-            ]);
-            toast({
-                title: 'Copied',
-                description: 'Image copied to clipboard',
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    
     function downloadImg(url: string) {
         window.location.href = url;
     }
@@ -86,7 +67,6 @@ function PromptCompletedImage({
                             />
                         </PopoverContent>
                     </Popover>
-                    <Copy className="w-6 h-6 cursor-pointer" onClick={() => copyImg(imgURL)}/>
                     <Download className="w-6 h-6 cursor-pointer" onClick={() => downloadImg(imgURL)}/>
                 </div>
             </div>
