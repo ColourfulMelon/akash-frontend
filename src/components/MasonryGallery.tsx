@@ -18,9 +18,9 @@ export default function MasonryGallery({ scope }: { scope: 'explore' | 'gallery'
             status: PromptStatus.Completed,
             limit: 100,
         }),
-        staleTime: 3000,
+        staleTime: 0,
         refetchInterval: 60_000,
-        enabled: clientId !== null,
+        enabled: scope === 'gallery' ? clientId !== null : true,
     });
     
     useLayoutEffect(() => {

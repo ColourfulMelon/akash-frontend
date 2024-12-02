@@ -31,7 +31,6 @@ export default function Playground() {
                 status: PromptStatus.Pending,
             });
         },
-        staleTime: 1000,
         refetchInterval: 3000,
         enabled: clientId !== null,
     });
@@ -48,7 +47,6 @@ export default function Playground() {
             }
             return null;
         },
-        staleTime: 500,
         refetchInterval: 1000,
         enabled: clientId !== null,
     });
